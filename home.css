@@ -70,9 +70,100 @@
     img {
         width: 100%;
     }
+    svg {
+        overflow: visible;
+    }
 }
 
 /* REGULAR CSS */
 @media only screen and (min-width: 0rem) {
+    #header-container {
+        display: flex;
+        padding: 50px 80px;
+        justify-content: space-between;
+        position: fixed;
+        width: 100%;
+        box-sizing: border-box;
+        z-index: 999;
+
+    }
+    #header-button {
+        width: 160px;
+        filter: invert(100%) sepia(0%) saturate(7500%) hue-rotate(10deg) brightness(117%) contrast(108%);
+
+    }
+    #nav-main {
+        display: flex;
+        justify-content: space-between;
+        font-size: 14px;
+        margin:  0 140px 0 0;
+        color: white;
+        align-items: center;
+    }
+    #nav-main li {
+        padding: 0 30px;
+    }
+    #nav-main a {
+        display: inline-block;
+        position: relative;
+        
+        font-weight: 100;
+        
+    }
+    
+    #nav-main a:after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        transform: scaleX(0);
+        margin: 3rem 0 0 0;
+        height: 0.1rem;
+        bottom: 0;
+        left: 0;
+        background-color: #ffffff;
+        transform-origin: bottom right;
+        transition: transform 0.25s ease-out;
+      
+      }
+
+    #nav-main a:hover::after {
+        transform: scaleX(1);
+        transform-origin: bottom left;
+    }
+      
+
+    #dropdown {
+        width: 26px;
+        filter: invert(100%) sepia(0%) saturate(7500%) hue-rotate(10deg) brightness(117%) contrast(108%);
+    }
+    #dropdown circle {
+        transform: translateX(0);
+        transition: transform 0.3s ease;
+    }
+    
+    
+    #dropdown:hover #circle-1 {
+        transform: translateX(-2px);
+        transition: transform 0.2s ease;
+    }
+    #dropdown:hover #circle-3 {
+        transform: translateX(2px);
+        transition: transform 0.2s ease;
+    }
+    
+    #video-container {
+        width: 1470px;
+        height: 641px;
+        overflow: hidden;
+        
+    
+    }
+    #video-header {
+        display: flex;
+        align-items: center;
+        width: 100%;
+    }
+   
+   
 
 }

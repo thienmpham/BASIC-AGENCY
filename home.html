@@ -3,22 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>˝
+    <title>Document</title>
     <link rel="stylesheet" href="home.css">
 
 </head>
 <body>
     <section id="section-header">
-            <button>
+
+        <div id="header-container">
+            <button id="header-button">
                 <img src="images/basic-logo.svg">
             </button>
-            <nav>
-
-            </nav>
+            <ul role=navbar id="nav-main">
+                <li>
+                    <a>WORK</a>
+                </li>
+                <li>
+                    <a>ABOUT</a>
+                </li>
+                <li>
+                    <a>NEW</a>
+                </li>
+                <li>
+                    <a>THINKING</a>
+                </li>
+                <li>
+                    <a>CAREERS</a>
+                </li>
+                <li>
+                    <a>CONTACT</a>
+                </li>
+            </ul>
             <button id="dropdown">
-
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 21 5">
+                    <circle id="circle-1" cx="2.5" cy="2.5" r="2"></circle>
+                    <circle id="circle-2"cx="10.5" cy="2.5" r="2.5"></circle>
+                    <circle id="circle-3"cx="18.5" cy="2.5" r="2.5"></circle>
+                </svg>
             </button>
-        
+        </div>
+        <div id="video-container">
+            <video id="video-header" controls autoplay loop muted>
+                <source src="/images/video-main.mp4" type="video/webm" />
+            </video>
+        </div>
+       
     </section>
 
     <script type="text/javascript" src="home.js"></script>
