@@ -55,7 +55,10 @@
         margin: 0; 
         list-style-type: none;
     }
-    
+    ol {
+        list-style-type: none;
+
+    }
     a {
         color: inherit;
     }
@@ -76,6 +79,10 @@
     p {
         margin: 0;
         padding: 0;
+    }
+
+    h5 {
+        margin: 0;
     }
 }
 
@@ -181,7 +188,7 @@
        
     }
 
-    #dropdown-page #left-side::before {
+    #dropdown-page > header > #left-side::before {
         content: "●";
         flex: 0 0 3rem;
     }
@@ -202,6 +209,85 @@
 
     }
     
+    /* DROPDOWN BODY */
+    #dropdown-body {
+        display: flex;
+        padding: 0;
+        margin: 0 80px;
+        position: relative;
+    }
+
+    .dropdown-body_content {
+        flex: 0 0 32%;
+        overflow: hidden;
+        margin: 0 0.6rem;
+        
+    }
+
+    .dropdown-body_content::before {
+        content: '';
+        width: 0.01rem;
+        height: calc(100% - 3rem);
+        background-color: white;
+        position: absolute;
+        top: 0;
+        left: 0;
+        
+        
+       
+
+    }
+    .dropdown-body_image::before {
+        content: counter(menu-initiatives, decimal-leading-zero);
+        position: absolute;
+        top: 92%;
+        left: -0.01%;
+        font-size: 0.6rem;
+
+    }
+    .dropdown-body_image {
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+    }
+    .dropdown-body_content picture {
+        display: flex;
+        align-items: center;
+        max-height: 13rem;
+    }
+    
+    .dropdown-body_info-container {
+        padding: 20px 25px 35px 25px;
+    }
+    .dropdown-body_info {
+        display: flex;
+        justify-content: space-between;
+    } 
+    .dropdown-body_info > #left-side {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .dropdown-body_info > #left-side > h5{
+        font-size: 1.3rem;
+        font-weight: 500;
+        margin: 0 0 0.5rem 0;
+    }
+    .dropdown-body_info > #left-side > h5 + span{
+        font-size: 0.7rem;
+    }
+    .dropdown-body_info > #left-side + #right-side> h5{
+        font-size: 1.3rem;
+        font-weight: 500;
+    }
+
+    #p-week {
+        margin: 2rem 0 1.7rem 0;
+    }
+    #p-visit {
+        font-weight: 500;
+        padding: 0 0 2rem 0;
+    }
     
 
     /* VIDEO CSS */
