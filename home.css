@@ -13,6 +13,7 @@
         width: 100vw;
         overflow-x: hidden;
         box-sizing: border-box;
+       
     }
     
     html {
@@ -88,6 +89,9 @@
 
 /* REGULAR CSS */
 @media only screen and (min-width: 0rem) {
+    #section-header {
+        z-index: 998;
+    }
     #header-container {
         display: flex;
         padding: 50px 80px;
@@ -95,7 +99,8 @@
         position: fixed;
         width: 100%;
         box-sizing: border-box;
-        z-index: 999;
+        /* z-index: 999; */
+
 
     }
     #header-button {
@@ -165,12 +170,14 @@
     #dropdown-page {
         position: fixed;
         width: 100%;
+        height: 100vh;
         color: #f9cdcd;
         top: 0;
         left: 0;
         background-color: #252422;
         font-size: 0.9rem;
         font-weight: 100;
+        z-index: 998;
     }
 
     #dropdown-page header {
@@ -178,7 +185,7 @@
         flex-direction: row;
         justify-content: space-between;
         padding: 50px 80px 50px 80px;
-        height: 100%;
+       
        
     }
 
@@ -209,12 +216,14 @@
 
     }
     
-    /* DROPDOWN BODY */
+        /* DROPDOWN BODY */
+    
     #dropdown-body {
         display: flex;
         padding: 0;
         margin: 0 80px;
         position: relative;
+       
     }
 
     .dropdown-body_content {
@@ -224,23 +233,11 @@
         
     }
 
-    .dropdown-body_content::before {
-        content: '';
-        width: 0.01rem;
-        height: calc(100% - 3rem);
-        background-color: white;
-        position: absolute;
-        top: 0;
-        left: 0;
-        
-        
-       
 
-    }
     .dropdown-body_image::before {
         content: counter(menu-initiatives, decimal-leading-zero);
         position: absolute;
-        top: 92%;
+        top: 96%;
         left: -0.01%;
         font-size: 0.6rem;
 
@@ -253,12 +250,31 @@
     .dropdown-body_content picture {
         display: flex;
         align-items: center;
-        max-height: 13rem;
+        width: 98%;
+        max-height: 38rem;
+    }
+
+    .dropdown-body_content picture::before {
+        content: '';
+        width: 0.01rem;
+        height: calc(100% - 3rem);
+        background-color: white;
+        position: absolute;
+        top: 0;
+        left: 0; 
+    }
+    .dropdown-body_content picture:hover {
+      
     }
     
     .dropdown-body_info-container {
         padding: 20px 25px 35px 25px;
+        background-color: #252422;
     }
+    .dropdown-body_info-container:hover {
+        transform: translateY(5%);
+    }
+
     .dropdown-body_info {
         display: flex;
         justify-content: space-between;
