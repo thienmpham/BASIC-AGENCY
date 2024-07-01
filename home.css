@@ -71,9 +71,9 @@
         padding: 0;
         
     }
-    img {
+    /* img {
         width: 100%;
-    }
+    } */
     svg {
         overflow: visible;
     }
@@ -240,6 +240,7 @@
         top: 96%;
         left: -0.01%;
         font-size: 0.6rem;
+        z-index: 999;
 
     }
     .dropdown-body_image {
@@ -249,9 +250,12 @@
     }
     .dropdown-body_content picture {
         display: flex;
+        position: relative;
         align-items: center;
+        justify-content: center;
         width: 98%;
-        max-height: 38rem;
+        max-height: 25vw;
+       
     }
 
     .dropdown-body_content picture::before {
@@ -263,21 +267,44 @@
         top: 0;
         left: 0; 
     }
-    .dropdown-body_content picture:hover {
-      
+    .dropdown-body_content img {
+        width: 110%;
     }
     
     .dropdown-body_info-container {
-        padding: 20px 25px 35px 25px;
+        position: relative;
         background-color: #252422;
+        z-index: 999;
+    
     }
-    .dropdown-body_info-container:hover {
-        transform: translateY(5%);
+  
+    .dropdown-body_content:hover > .dropdown-body_image + .dropdown-body_info-container > .dropdown-body_info {
+            transform: translateY(-70%);
+            transition: transform 0.5s ease;
+        
+    }
+    .dropdown-body_content:hover > .dropdown-body_image > picture > img   {
+        transform: scale(0.94);
+        transition: transform 0.5s ease;
+    }
+
+    .dropdown-body_image img {
+        transform: scale(1);
+        transition: transform 0.5s ease;
     }
 
     .dropdown-body_info {
         display: flex;
         justify-content: space-between;
+        transform: translateY(0);
+        transition: transform 0.5s ease;
+        background-color: #252422; 
+        padding: 20px 25px 30% 25px;
+        background-clip: padding-box;
+
+    }
+    .dropdown-body_info-2 {
+        position: absolute;
     } 
     .dropdown-body_info > #left-side {
         display: flex;
@@ -303,6 +330,22 @@
     #p-visit {
         font-weight: 500;
         padding: 0 0 2rem 0;
+    }
+    .dropdown-body_info-2 {
+        position: absolute;
+        top: -10%;
+        padding: 0 25px;
+        opacity: 0;
+        z-index: 999;
+        transform: translateY(0);
+        transition: transform 0.5s ease, opacity 0.5s ease;
+    }
+    .dropdown-body_content:hover > .dropdown-body_image + 
+    .dropdown-body_info-container > .dropdown-body_info + .dropdown-body_info-2 {
+        visibility: visible;
+        opacity: 1;
+        transform: translateY(-30%);
+        transition: transform 0.5s ease,  opacity 0.5s ease;
     }
     
 
