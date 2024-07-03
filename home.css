@@ -55,6 +55,7 @@
     ul {
         margin: 0; 
         list-style-type: none;
+        padding: 0;
     }
     ol {
         list-style-type: none;
@@ -179,6 +180,7 @@
         font-weight: 100;
         z-index: 998;
     }
+   
 
     #dropdown-page header {
         display: flex;
@@ -218,6 +220,12 @@
     
         /* DROPDOWN BODY */
     
+    #dropdown-page #left-side-2 {
+        display: none;
+    }
+    #dropdown-body-2 {
+        display: none;
+    }
     #dropdown-body {
         display: flex;
         padding: 0;
@@ -226,9 +234,10 @@
         overflow-x:scroll;
        
     }
+   
 
     .dropdown-body_content {
-        flex: 0 0 32%;
+        flex: 0 0 30%;
      
         margin: 0 0.6rem;
         position: relative;
@@ -255,7 +264,6 @@
         display: flex;
         flex-direction: column;
         overflow: hidden;
-        /* counter-increment: menu-initiatives; */
        
     }
     .dropdown-body_content picture {
@@ -264,7 +272,7 @@
         align-items: center;
         justify-content: center;
         width: 98%;
-        max-height: 25vw;
+        max-height: 20vw;
         counter-increment: menu-initiatives;
         
        
@@ -363,6 +371,14 @@
     }
     
 
+    /* --FOOTER  */
+    #dropdown-footer {
+        display: flex;
+        justify-content: space-between;
+        padding: 0px 80px 0px 80px;
+        color: #525252;
+    }
+    
     /* VIDEO CSS */
     #video-container {
         width: 100%;
@@ -375,9 +391,56 @@
         display: flex;
         align-items: center;
         width: 100%;
+        
     }
   
    
 
 
+}
+
+
+/* MOBILE CSS */
+@media only screen and (min-width: 0rem) {
+
+    @media (max-width: 1250px){
+        html {
+            font-size: 70%;
+        }
+        #dropdown-page header {
+            padding: 4% 5%;
+        }
+        #dropdown-page footer {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            padding: 3% 5%;
+        }
+        #dropdown-page #left-side {
+            display: none;
+        }
+
+        #dropdown-page #left-side-2 {
+            display: block;
+            width: 135px;
+
+        }
+        #dropdown-page #left-side-2 img {
+            filter: invert(80%) sepia(7%) saturate(907%) hue-rotate(314deg) brightness(106%) contrast(95%);
+        }
+
+        #dropdown-body {
+            display: none;
+        }
+
+        #dropdown-body-2 {
+            display: block;
+            font-size: 250%;
+            font-weight: 500;
+            padding: 0 5%;
+        }
+        #dropdown-body-2 li {
+            margin-top: 1.5rem;
+        }
+    }
 }

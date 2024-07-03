@@ -8,13 +8,55 @@
 
 </head>
 <body>
+    
+    <section id="section-header">
+        <div id="header-container">
+            <button id="header-button">
+                <img src="images/basic-logo.svg">
+            </button>
+            <ul role=navbar id="nav-main">
+                <li>
+                    <a>WORK</a>
+                </li>
+                <li>
+                    <a>ABOUT</a>
+                </li>
+                <li>
+                    <a>NEW</a>
+                </li>
+                <li>
+                    <a>THINKING</a>
+                </li>
+                <li>
+                    <a>CAREERS</a>
+                </li>
+                <li>
+                    <a>CONTACT</a>
+                </li>
+            </ul>
+            <button id="dropdown">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 21 5">
+                    <circle id="circle-1" cx="2.5" cy="2.5" r="2"></circle>
+                    <circle id="circle-2"cx="10.5" cy="2.5" r="2.5"></circle>
+                    <circle id="circle-3"cx="18.5" cy="2.5" r="2.5"></circle>
+                </svg>
+            </button>
+
+        </div>
+        
+        <div id="video-container">
+            <video id="video-header"  autoplay loop muted>
+                <source src="/images/video-main.mp4" type="video/webm" />
+            </video>
+        </div>
+    </section>
+
+
     <section id="section-dropdown">
         <div id="dropdown-page">
             <header>
+                
                 <div id="left-side">
-                    <!-- <span id="dot">
-                    </span> -->
-
                     <p>
                         (5) INTERNAL WORKS ®24 c/o BASIC/DEPT©
                     </p>
@@ -22,13 +64,38 @@
                         A COLLECTION OF PROJECTS AND INITITATIVES UNDER THE <br> BASIC/DEPT® BRAND.
                     </span>
                 </div>
+                <div id="left-side-2">
+                    <img src="images/basic-logo.svg">
+                </div>
                 <div id="right-side">
                     <button id="exit-button">
                         <img src="images/drop-exit.svg">
                     </button>
                 </div>
             </header>
-
+            <ul id="dropdown-body-2">
+                <li>
+                    <a href="#">WORK</a>
+                </li>
+                <li>
+                    <a href="#">ABOUT</a>
+                </li>
+                <li>
+                    <a href="#">NEWS</a>
+                </li>
+                <li>
+                    <a href="#">THINKING</a>
+                </li>
+                <li>
+                    <a href="#">CAREERS</a>
+                </li>
+                <li>
+                    <a href="#">CONTACT</a>
+                </li>
+                <li>
+                    <a href="#">INITITATIVES</a>
+                </li>
+            </ul>
             <ol id="dropdown-body">
 
                 <li class="dropdown-body_content">
@@ -173,59 +240,19 @@
                             </p>
                         </div>
                     </div>
-                </li>
-
-
-                
+                </li> 
             </ol>
+
+            <footer id="dropdown-footer">
+                <span>BASIC/DEPT®, inc</span>
+                <span>10-24©</span>
+            </footer>
+
+
         </div>
     </section>
 
-    <section id="section-header">
-        <div id="header-container">
-            <button id="header-button">
-                <img src="images/basic-logo.svg">
-            </button>
-            <ul role=navbar id="nav-main">
-                <li>
-                    <a>WORK</a>
-                </li>
-                <li>
-                    <a>ABOUT</a>
-                </li>
-                <li>
-                    <a>NEW</a>
-                </li>
-                <li>
-                    <a>THINKING</a>
-                </li>
-                <li>
-                    <a>CAREERS</a>
-                </li>
-                <li>
-                    <a>CONTACT</a>
-                </li>
-            </ul>
-            <button id="dropdown">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 21 5">
-                    <circle id="circle-1" cx="2.5" cy="2.5" r="2"></circle>
-                    <circle id="circle-2"cx="10.5" cy="2.5" r="2.5"></circle>
-                    <circle id="circle-3"cx="18.5" cy="2.5" r="2.5"></circle>
-                </svg>
-            </button>
-
-        </div>
-        
-        <div id="video-container">
-            <video id="video-header"  autoplay loop muted>
-                <source src="/images/video-main.mp4" type="video/webm" />
-            </video>
-        </div>
-    </section>
-
-
-    
-
+   
     <script type="text/javascript" src="home.js"></script>
 </body>
 </html>
