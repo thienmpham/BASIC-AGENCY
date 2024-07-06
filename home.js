@@ -18,9 +18,9 @@ function dropdownAnimation() {
         if(dropdownBtn) {
             animation.classList.add('slider');
         }
-        if(exitBtn) {
-            animation.classList.remove('slider');
-        }
+        // if(exitBtn) {
+        //     animation.classList.remove('slider');
+        // }
     })
 }
 dropdownAnimation();
