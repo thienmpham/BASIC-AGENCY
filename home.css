@@ -192,8 +192,10 @@
         z-index: 2;
    }
    #animation-slide.slider {
-        animation-name: slidein;
-        animation-duration: 0.5s;
+        /* animation-name: slidein;
+        animation-duration: 0.5s; */
+        transform: translateX(-2000px);
+        transition: transform 1s ease;
        
    }
    @keyframes slidein {
@@ -201,10 +203,10 @@
             transform: translateX(10px);
         }
         50% {
-            transform: translateX(80px);
+            transform: translateX(500px);
         }
         100% {
-            transform: translateX(100px);
+            transform: translateX(1000px);
 
         }
    }
