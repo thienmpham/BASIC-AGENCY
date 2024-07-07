@@ -192,25 +192,15 @@
         z-index: 2;
    }
    #animation-slide.slider {
-        /* animation-name: slidein;
-        animation-duration: 0.5s; */
-        transform: translateX(-2000px);
-        transition: transform 1s ease;
-       
+        transform: translateX(-100%);
+        transition: transform 1s cubic-bezier(0.77,0,0.175,1); 
    }
-   @keyframes slidein {
-        0% {
-            transform: translateX(10px);
-        }
-        50% {
-            transform: translateX(500px);
-        }
-        100% {
-            transform: translateX(1000px);
-
-        }
+   #dropdown-body.slider {
+        transform: translateX(0);
+      
+        transition: transform 1s cubic-bezier(0.77,0,0.175,1);
    }
-
+ 
     #dropdown-page header {
         display: flex;
         flex-direction: row;
@@ -260,7 +250,8 @@
         padding: 0;
         margin: 0 80px;
         position: relative;
-        overflow-x:scroll;
+        overflow-x: scroll;
+        transform: translateX(10%);
        
     }
    

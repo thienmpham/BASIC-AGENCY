@@ -13,14 +13,17 @@ function dropdownAnimation() {
     let exitBtn = document.querySelector('#exit-button');
     let dropdownBtn = document.querySelector('#dropdown');
     let animation = document.querySelector('#animation-slide');
+    let dropdownBody = document.querySelector('#dropdown-body');
 
-    document.addEventListener('click', function(){
-        if(dropdownBtn) {
-            animation.classList.add('slider');
-        }
-        // if(exitBtn) {
-        //     animation.classList.remove('slider');
-        // }
+    dropdownBtn.addEventListener('click', function(){
+            animation.classList.add('slider');  
+            dropdownBody.classList.add('slider')      
+    })
+
+    exitBtn.addEventListener('click', function(){
+        animation.classList.remove('slider');
+        dropdownBody.classList.remove('slider')  
+       
     })
 }
 dropdownAnimation();
