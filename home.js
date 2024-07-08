@@ -27,3 +27,37 @@ function dropdownAnimation() {
     })
 }
 dropdownAnimation();
+
+function getPositionMouseY(e) {
+    let y = e.clientY;
+    return y;
+    
+}
+
+function getPositionMouseX(e) {
+    let x = e.clientX;
+    return x;
+}
+function styleMouse(cursorSelector) {
+    let y = getPositionMouseY();
+    // let x = getPositionMouseX();
+
+    console.log(x, y)
+    let cursor = document.querySelector(cursorSelector);
+    // cursor.style.transform = `translate3d(${x}px, ${y}px, 0)`;
+}
+
+function selectMouseArea(selector) {
+    let selection = document.querySelector(selector);
+    selection.addEventListener('mousemove',getPositionMouseY);
+  
+
+}
+
+
+function handleMouse() {
+    selectMouseArea('#dropdown-page');
+    styleMouse('#cursor-drop');
+
+}
+handleMouse();
