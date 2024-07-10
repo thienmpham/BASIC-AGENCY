@@ -254,8 +254,35 @@
         transform: translateX(10%);
        
     }
+    #dropdown-body:hover {
+        /* cursor: none; */
+    }
+  
+   #cursor-drop {
+    position: absolute;
+    width: 7rem;
+    height: 7rem;
+    background-color: #f9cdcd;
+    z-index: 2;
+    border-radius: 50%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    transform: translate(-50%,-50%);
+    pointer-events: none;
    
-
+   
+   }
+   #cursor-drop span{
+    color: #252422;
+    padding: 2rem;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   
+    
+   }
     .dropdown-body_content {
         flex: 0 0 30%;
      

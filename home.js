@@ -27,37 +27,42 @@ function dropdownAnimation() {
     })
 }
 dropdownAnimation();
-
-function getPositionMouseY(e) {
+let x = getMousePosition();
+console.log(x)
+function getMousePosition(e){
+    document.addEventListener('mousemove', function(e){
+    let x = e.clientX;
     let y = e.clientY;
-    return y;
+    return x;
+    })
     
 }
+getMousePosition();
 
-function getPositionMouseX(e) {
-    let x = e.clientX;
-    return x;
+function changeMouseStyle(){
+
 }
-function styleMouse(cursorSelector) {
-    let y = getPositionMouseY();
-    // let x = getPositionMouseX();
-
-    console.log(x, y)
-    let cursor = document.querySelector(cursorSelector);
-    // cursor.style.transform = `translate3d(${x}px, ${y}px, 0)`;
-}
-
-function selectMouseArea(selector) {
+function changeMouseCursor(selector, cursorSelector) {
     let selection = document.querySelector(selector);
-    selection.addEventListener('mousemove',getPositionMouseY);
-  
+    selection.addEventListener('mousemove',function(e){
+        let x = e.clientX;
+        let y = e.clientY;
+        let cursor = document.querySelector(cursorSelector);
+        cursor.style.transform = `translate3d(calc(${x}px - 150%), 
+        calc(${y}px - 150%), 0)`;
+        
 
+    });
 }
+// changeMouseCursor('#dropdown-body', '#cursor-drop');
 
+function changeMouseScroll(selector) {
+    let selection = document.querySelector(selector);
+    selection.addEventListener('scroll', function(e){
 
-function handleMouse() {
-    selectMouseArea('#dropdown-page');
-    styleMouse('#cursor-drop');
-
+    })
 }
-handleMouse();
+changeMouseScroll('#dropdown-page');
+
+
+
