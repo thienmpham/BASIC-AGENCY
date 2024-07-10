@@ -27,13 +27,17 @@ function dropdownAnimation() {
     })
 }
 dropdownAnimation();
-let x = getMousePosition();
-console.log(x)
-function getMousePosition(e){
+
+
+function getMousePosition(areaSelector){
+    let area = document.querySelector(areaSelector);
+
     document.addEventListener('mousemove', function(e){
-    let x = e.clientX;
-    let y = e.clientY;
-    return x;
+        let x = e.clientX;
+        let y = e.clientY;
+        
+        changeMouseCursor( area, '#dropdown-body', '#cursor-drop', x, y);
+
     })
     
 }
@@ -42,9 +46,8 @@ getMousePosition();
 function changeMouseStyle(){
 
 }
-function changeMouseCursor(selector, cursorSelector) {
-    let selection = document.querySelector(selector);
-    selection.addEventListener('mousemove',function(e){
+function changeMouseCursor( cursorSelector, x, y) {
+    area.addEventListener('mousemove',function(e){
         let x = e.clientX;
         let y = e.clientY;
         let cursor = document.querySelector(cursorSelector);
@@ -56,9 +59,9 @@ function changeMouseCursor(selector, cursorSelector) {
 }
 // changeMouseCursor('#dropdown-body', '#cursor-drop');
 
-function changeMouseScroll(selector) {
-    let selection = document.querySelector(selector);
-    selection.addEventListener('scroll', function(e){
+function changeMouseScroll(areaSelector) {
+    let area = document.querySelector(areaSelector);
+    area.addEventListener('scroll', function(e){
 
     })
 }
