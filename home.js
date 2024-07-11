@@ -29,43 +29,26 @@ function dropdownAnimation() {
 dropdownAnimation();
 
 
-function getMousePosition(areaSelector){
-    let area = document.querySelector(areaSelector);
-
-    document.addEventListener('mousemove', function(e){
-        let x = e.clientX;
-        let y = e.clientY;
-        
-        changeMouseCursor( area, '#dropdown-body', '#cursor-drop', x, y);
-
-    })
-    
+function onMouseMove(areaSelector) {
+    let area = document.querySelector(areaSelector)
+    area.addEventListener('mousemove', getMousePosition);
+    area.addEventListener('scroll', getMousePosition);
 }
-getMousePosition();
-
-function changeMouseStyle(){
-
+onMouseMove('#dropdown-body');
+function getMousePosition(event) {
+    let x = event.clientX;
+    let y = event.clientY;
+   
+  
+   changeMouseStyle('#cursor-drop', x, y);
 }
-function changeMouseCursor( cursorSelector, x, y) {
-    area.addEventListener('mousemove',function(e){
-        let x = e.clientX;
-        let y = e.clientY;
-        let cursor = document.querySelector(cursorSelector);
-        cursor.style.transform = `translate3d(calc(${x}px - 150%), 
-        calc(${y}px - 150%), 0)`;
-        
 
-    });
+
+function changeMouseStyle(cursorSelector, x, y) {
+    let cursor = document.querySelector(cursorSelector);
+    cursor.style.transform = `translate3d(calc(${x}px - 100%), 
+    calc(${y}px - 150%), 0)`; 
 }
-// changeMouseCursor('#dropdown-body', '#cursor-drop');
-
-function changeMouseScroll(areaSelector) {
-    let area = document.querySelector(areaSelector);
-    area.addEventListener('scroll', function(e){
-
-    })
-}
-changeMouseScroll('#dropdown-page');
 
 
 
