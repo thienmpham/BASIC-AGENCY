@@ -32,22 +32,41 @@ dropdownAnimation();
 function onMouseMove(areaSelector) {
     let area = document.querySelector(areaSelector)
     area.addEventListener('mousemove', getMousePosition);
-    area.addEventListener('scroll', getMousePosition);
+
 }
 onMouseMove('#dropdown-body');
+
 function getMousePosition(event) {
     let x = event.clientX;
     let y = event.clientY;
+
+    let area = document.querySelector('#dropdown-body');
+    let offsetX = area.offsetWidth;
+    let offsetY = area.offsetHeight;
    
   
-   changeMouseStyle('#cursor-drop', x, y);
+   changeMouseStyle('#dropdown-page', '#cursor-drop', x, y);
 }
 
 
-function changeMouseStyle(cursorSelector, x, y) {
+function changeMouseStyle(areaSelector,cursorSelector, x, y) {
+    let area = document.querySelector(areaSelector);
     let cursor = document.querySelector(cursorSelector);
+
+    let offsetX = area.offsetWidth;
+    let offsetY = area.offsetHeight;
+    console.log(offsetX,offsetY)
     cursor.style.transform = `translate3d(calc(${x}px - 100%), 
     calc(${y}px - 150%), 0)`; 
+    
+}
+
+function getOffset(areaSelector) {
+    let area = document.querySelector(areaSelector);
+    let offsetX = area.offsetWidth;
+    let offsetY = area.offsetHeight;
+
+    
 }
 
 
