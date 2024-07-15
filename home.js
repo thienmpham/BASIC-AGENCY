@@ -29,45 +29,64 @@ function dropdownAnimation() {
 dropdownAnimation();
 
 
+
 function onMouseMove(areaSelector) {
     let area = document.querySelector(areaSelector)
     area.addEventListener('mousemove', getMousePosition);
-
+    area.addEventListener('scroll',getMousePosition);
 }
 onMouseMove('#dropdown-body');
 
-function getMousePosition(event) {
-    let x = event.clientX;
-    let y = event.clientY;
-
+function getScrollPosition(event){
     let area = document.querySelector('#dropdown-body');
-    let offsetX = area.offsetWidth;
-    let offsetY = area.offsetHeight;
-   
+    let x = area.scrollLeft;
+    let y = area.scrollTop;
+    console.log(x, y)
+    changeMouseStyle( '#cursor-drop', x, y);
+
+}
+function getMousePosition(event) {
   
-   changeMouseStyle('#dropdown-page', '#cursor-drop', x, y);
+    let area = document.querySelector('#dropdown-body');
+    let x = event.pageX;
+    let y = event.pageY;
+
+    console.log(x, y, area.scrollLeft)
+   
+    
+   changeMouseStyle('#cursor-drop', x, y);
 }
 
 
-function changeMouseStyle(areaSelector,cursorSelector, x, y) {
-    let area = document.querySelector(areaSelector);
+function changeMouseStyle(cursorSelector, x, y) {
+  
     let cursor = document.querySelector(cursorSelector);
 
-    let offsetX = area.offsetWidth;
-    let offsetY = area.offsetHeight;
-    console.log(offsetX,offsetY)
-    cursor.style.transform = `translate3d(calc(${x}px - 100%), 
-    calc(${y}px - 150%), 0)`; 
+    cursor.style.top(`${y}px`);
+    cursor.style.left(`${x}px`);
+    // cursor.setAttribute("style", "top: ", +y+"px; left: "+x+"px;");
+    // cursor.style.transform = `translate3d(calc(${x}px), 
+    // calc(${y}px), 0)`; 
     
+
 }
 
-function getOffset(areaSelector) {
-    let area = document.querySelector(areaSelector);
-    let offsetX = area.offsetWidth;
-    let offsetY = area.offsetHeight;
-
+// function getOffset(areaSelector) {
+//     let area = document.querySelector(areaSelector);
+//     let offsetX = area.offsetWidth;
+//     let offsetY = area.offsetHeight;
     
-}
+//     return {
+//         offsetX: offsetX,
+//         offsetY: offsetY,
+//     }
+
+
+// }
+// const {offsetX, offsetY} = getOffset('#dropdown-body');
+
+
+
 
 
 

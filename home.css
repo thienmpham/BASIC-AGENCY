@@ -252,6 +252,7 @@
         position: relative;
         overflow-x: scroll;
         transform: translateX(10%);
+        overflow-y: hidden;
        
     }
     #dropdown-body:hover {
@@ -259,7 +260,7 @@
     }
   
    #cursor-drop {
-    position: absolute;
+    position: fixed;
     width: 7rem;
     height: 7rem;
     background-color: #f9cdcd;
@@ -268,7 +269,7 @@
     text-align: center;
     display: flex;
     justify-content: center;
-    transform: translate(-50%,-50%);
+    /* transform: translate(-50%,-50%); */
     pointer-events: none;
    
    
