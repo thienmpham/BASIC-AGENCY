@@ -30,60 +30,48 @@ dropdownAnimation();
 
 
 
-function onMouseMove(areaSelector) {
-    let area = document.querySelector(areaSelector)
+function onMouseMove(areaSelector, hoverSelector, cursorSelector) {
+    let area = document.querySelector(areaSelector);
+
     area.addEventListener('mousemove', getMousePosition);
-    area.addEventListener('scroll',getMousePosition);
-}
-onMouseMove('#dropdown-body');
-
-function getScrollPosition(event){
-    let area = document.querySelector('#dropdown-body');
-    let x = area.scrollLeft;
-    let y = area.scrollTop;
-    console.log(x, y)
-    changeMouseStyle( '#cursor-drop', x, y);
 
 }
+onMouseMove('#dropdown-body', '.a-drop', '#cursor-drop');
+
 function getMousePosition(event) {
   
-    let area = document.querySelector('#dropdown-body');
-    let x = event.pageX;
-    let y = event.pageY;
-
-    console.log(x, y, area.scrollLeft)
-   
-    
+    let x = event.clientX;
+    let y = event.clientY;
+      
    changeMouseStyle('#cursor-drop', x, y);
 }
 
 
-function changeMouseStyle(cursorSelector, x, y) {
-  
+function changeMouseStyle(cursorSelector, x, y) { 
     let cursor = document.querySelector(cursorSelector);
-
-    cursor.style.top(`${y}px`);
-    cursor.style.left(`${x}px`);
-    // cursor.setAttribute("style", "top: ", +y+"px; left: "+x+"px;");
-    // cursor.style.transform = `translate3d(calc(${x}px), 
-    // calc(${y}px), 0)`; 
-    
-
+    cursor.style.top = (`${y - 180}px`);
+    cursor.style.left = (`${x - 140}px`);
 }
 
-// function getOffset(areaSelector) {
-//     let area = document.querySelector(areaSelector);
-//     let offsetX = area.offsetWidth;
-//     let offsetY = area.offsetHeight;
-    
-//     return {
-//         offsetX: offsetX,
-//         offsetY: offsetY,
-//     }
 
+function changeHoverStyle( areaSelector, cursorSelector ){
+    let area = document.querySelector(areaSelector)
+    let cursor = document.querySelector(cursorSelector);
 
-// }
-// const {offsetX, offsetY} = getOffset('#dropdown-body');
+    cursor.addEventListener('mouseover', function(e){
+        if(cursor){
+            console.log('hovering...')
+            cursor.style.opacity = '0.4;';
+        }
+
+        else {
+            cursor.style.opacity = '1';;
+        }
+    });
+
+}
+changeHoverStyle('#dropdown-body','#cursor-drop')
+
 
 
 

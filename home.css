@@ -256,11 +256,11 @@
        
     }
     #dropdown-body:hover {
-        /* cursor: none; */
+        cursor: none;
     }
   
    #cursor-drop {
-    position: fixed;
+    position: sticky;
     width: 7rem;
     height: 7rem;
     background-color: #f9cdcd;
@@ -274,6 +274,8 @@
    
    
    }
+
+  
    #cursor-drop span{
     color: #252422;
     padding: 2rem;
@@ -281,9 +283,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
-   
+    
     
    }
+
+  
     .dropdown-body_content {
         flex: 0 0 30%;
      
