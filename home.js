@@ -49,28 +49,46 @@ function getMousePosition(event) {
 
 function changeMouseStyle(cursorSelector, x, y) { 
     let cursor = document.querySelector(cursorSelector);
-    cursor.style.top = (`${y - 180}px`);
-    cursor.style.left = (`${x - 140}px`);
+    // cursor.style.top = (`${y - 180}px`);
+    // cursor.style.left = (`${x - 140}px`);
+
+    cursor.style.transform = 
+        `translate( calc(${x}px - 1320%), calc(${y}px - 250%))`;
+
 }
 
 
-function changeHoverStyle( areaSelector, cursorSelector ){
-    let area = document.querySelector(areaSelector)
+function changeHoverStyle( areaSelector, hoverSelector, cursorSelector ){
+    let area = document.querySelector(areaSelector);
+    let hoverItems = document.querySelectorAll(hoverSelector);
+    let cursor = document.querySelector(cursorSelector)
+
+    hoverItems.forEach(hover => {
+        hover.addEventListener('mouseover', function(e){
+            cursor.style.opacity = '0.4';
+        })
+    })
+
+    hoverItems.forEach(hover => {
+        hover.addEventListener('mouseout', function(e){
+            cursor.style.opacity = '1';
+        })
+    })
+  
+}
+changeHoverStyle('#dropdown-body','.u-drop', '#cursor-drop');
+
+function handleMouseOut(cursorSelector, areaSelector) {
     let cursor = document.querySelector(cursorSelector);
-
-    cursor.addEventListener('mouseover', function(e){
-        if(cursor){
-            console.log('hovering...')
-            cursor.style.opacity = '0.4;';
-        }
-
-        else {
-            cursor.style.opacity = '1';;
-        }
-    });
-
+    let area = document.querySelector(areaSelector)
+    area.addEventListener('mouseout', function(e){
+        cursor.style.transform = 'translate(0)';
+        // cursor.style.transitionDuration = '400ms';
+        
+    })
 }
-changeHoverStyle('#dropdown-body','#cursor-drop')
+handleMouseOut('#cursor-drop','#dropdown-body');
+
 
 
 

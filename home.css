@@ -269,8 +269,12 @@
     text-align: center;
     display: flex;
     justify-content: center;
-    /* transform: translate(-50%,-50%); */
+    /* transform: translate(1rem,1rem); */
+    top: 20%;
+    left: 90%;
     pointer-events: none;
+    transition-duration: 200ms;
+    transition-timing-function: ease-out;
    
    
    }
