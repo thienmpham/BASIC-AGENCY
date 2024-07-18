@@ -256,29 +256,30 @@
        
     }
     #dropdown-body:hover {
-        cursor: none;
+        /* cursor: none; */
     }
-  
-   #cursor-drop {
-    position: sticky;
-    width: 7rem;
-    height: 7rem;
-    background-color: #f9cdcd;
-    z-index: 2;
-    border-radius: 50%;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    /* transform: translate(1rem,1rem); */
-    top: 20%;
-    left: 90%;
-    pointer-events: none;
-    transition-duration: 200ms;
-    transition-timing-function: ease-out;
-   
-   
-   }
 
+   #cursor-drop {
+        position: sticky;
+        width: 7rem;
+        height: 7rem;
+        background-color: #f9cdcd;
+        z-index: 2;
+        border-radius: 50%;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        left: 0;
+        /* transform: translate(-50% , -50%); */
+        top: 20%;
+        left: 90%;
+        pointer-events: none;
+        transition-duration: 200ms;
+        transition-timing-function: ease-out;
+   }
+   #cursor-drop.effect {
+        
+   }
   
    #cursor-drop span{
     color: #252422;

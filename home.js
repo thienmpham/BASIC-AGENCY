@@ -49,13 +49,13 @@ function getMousePosition(event) {
 
 function changeMouseStyle(cursorSelector, x, y) { 
     let cursor = document.querySelector(cursorSelector);
-    // cursor.style.top = (`${y - 180}px`);
-    // cursor.style.left = (`${x - 140}px`);
-
+    cursor.style.top = '0';
+    cursor.style.left = '0';
     cursor.style.transform = 
-        `translate( calc(${x}px - 1320%), calc(${y}px - 250%))`;
-
+        `translate( calc(${x}px - 120%), calc(${y}px - 160%))`;
+       
 }
+    
 
 
 function changeHoverStyle( areaSelector, hoverSelector, cursorSelector ){
@@ -70,7 +70,7 @@ function changeHoverStyle( areaSelector, hoverSelector, cursorSelector ){
     })
 
     hoverItems.forEach(hover => {
-        hover.addEventListener('mouseout', function(e){
+        hover.addEventListener('mouseleave', function(e){
             cursor.style.opacity = '1';
         })
     })
@@ -78,13 +78,16 @@ function changeHoverStyle( areaSelector, hoverSelector, cursorSelector ){
 }
 changeHoverStyle('#dropdown-body','.u-drop', '#cursor-drop');
 
+
 function handleMouseOut(cursorSelector, areaSelector) {
     let cursor = document.querySelector(cursorSelector);
     let area = document.querySelector(areaSelector)
-    area.addEventListener('mouseout', function(e){
-        cursor.style.transform = 'translate(0)';
-        // cursor.style.transitionDuration = '400ms';
+    area.addEventListener('mouseleave', function(e){
+        cursor.style.top = '20%';
+        cursor.style.left = '90%';
+        cursor.style.transform = 'translate(0)'; 
         
+              
     })
 }
 handleMouseOut('#cursor-drop','#dropdown-body');
