@@ -28,13 +28,36 @@ function dropdownAnimation() {
 }
 dropdownAnimation();
 
+// Destructuring assignment using objects in functions
+let {area, hover, cursor} = getMouseValues('#dropdown-body', '.a-drop', '#cursor-drop');
+
+console.log( "area:", area, 
+            "hover:", hover, 
+            "cursor:", cursor )
+
+
+function getMouseValues(areaSelector, hoverSelector, cursorSelector) {
+    let area = document.querySelector(areaSelector);
+    let hover = document.querySelector(hoverSelector);
+    let cursor = document.querySelector(cursorSelector);
+
+    return {
+        area: area,
+        hover: hover, 
+        cursor: cursor,
+    }
+}
+// getMouseValues('#dropdown-body', '.a-drop', '#cursor-drop');
 
 
 function onMouseMove(areaSelector, hoverSelector, cursorSelector) {
     let area = document.querySelector(areaSelector);
+    let hover = document.querySelector(hoverSelector);
+    let cursor = document.querySelector(cursorSelector);
 
     area.addEventListener('mousemove', getMousePosition);
 
+   
 }
 onMouseMove('#dropdown-body', '.a-drop', '#cursor-drop');
 
@@ -53,7 +76,7 @@ function changeMouseStyle(cursorSelector, x, y) {
     cursor.style.left = '0';
     cursor.style.transform = 
         `translate( calc(${x}px - 120%), calc(${y}px - 160%))`;
-       
+    
 }
     
 
@@ -92,9 +115,18 @@ function handleMouseOut(cursorSelector, areaSelector) {
 }
 handleMouseOut('#cursor-drop','#dropdown-body');
 
+function handleMouseDown(cursorSelector, areaSelector) {
+    let cursor = document.querySelector(cursorSelector);
+    let area = document.querySelector(areaSelector)
 
+    area.addEventListener('mousedown', function(e){
+        cursor.classList.add('drag');
+        console.log('drag')
+    })
 
+}
 
+handleMouseDown('#cursor-drop', '#dropdown-body')
 
 
 

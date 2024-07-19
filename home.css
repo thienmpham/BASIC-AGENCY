@@ -277,8 +277,12 @@
         transition-duration: 200ms;
         transition-timing-function: ease-out;
    }
-   #cursor-drop.effect {
-        
+   #cursor-drop.drag {
+        transform: scale(0.7);
+   }
+
+   #cursor-drop.drag > span {
+        visibility: hidden;
    }
   
    #cursor-drop span{
