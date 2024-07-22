@@ -270,15 +270,16 @@
         display: flex;
         justify-content: center;
         left: 0;
-        /* transform: translate(-50% , -50%); */
         top: 20%;
         left: 90%;
         pointer-events: none;
         transition-duration: 200ms;
         transition-timing-function: ease-out;
+        
    }
    #cursor-drop.drag {
-        transform: scale(0.7);
+        transform: scale(0.2);
+        
    }
 
    #cursor-drop.drag > span {

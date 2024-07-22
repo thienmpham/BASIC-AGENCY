@@ -29,14 +29,12 @@ function dropdownAnimation() {
 dropdownAnimation();
 
 // Destructuring assignment using objects in functions
-let {area, hover, cursor} = getMouseValues('#dropdown-body', '.a-drop', '#cursor-drop');
-
-console.log( "area:", area, 
-            "hover:", hover, 
-            "cursor:", cursor )
+let mouseValues1 = initializeMouseValues('#dropdown-body', '.a-drop', '#cursor-drop');
 
 
-function getMouseValues(areaSelector, hoverSelector, cursorSelector) {
+
+
+function initializeMouseValues(areaSelector, hoverSelector, cursorSelector) {
     let area = document.querySelector(areaSelector);
     let hover = document.querySelector(hoverSelector);
     let cursor = document.querySelector(cursorSelector);
@@ -47,44 +45,44 @@ function getMouseValues(areaSelector, hoverSelector, cursorSelector) {
         cursor: cursor,
     }
 }
-// getMouseValues('#dropdown-body', '.a-drop', '#cursor-drop');
 
-
-function onMouseMove(areaSelector, hoverSelector, cursorSelector) {
-    let area = document.querySelector(areaSelector);
-    let hover = document.querySelector(hoverSelector);
-    let cursor = document.querySelector(cursorSelector);
-
-    area.addEventListener('mousemove', getMousePosition);
-
-   
+function getMouseValues(elements) {
+    let { area, hover, cursor} = elements;
+    console.log(area)
 }
-onMouseMove('#dropdown-body', '.a-drop', '#cursor-drop');
+getMouseValues(mouseValues1);
+
+
+
+function onMouseMove(elements) {
+    let { area, hover, cursor} = elements;
+    area.addEventListener('mousemove', getMousePosition);
+}
+onMouseMove(mouseValues1);
+
 
 function getMousePosition(event) {
   
     let x = event.clientX;
     let y = event.clientY;
       
-   changeMouseStyle('#cursor-drop', x, y);
+   changeMouseStyle(mouseValues1, x, y);
 }
 
 
-function changeMouseStyle(cursorSelector, x, y) { 
-    let cursor = document.querySelector(cursorSelector);
+function changeMouseStyle(elements, x, y) { 
+    let { area, hover, cursor} = elements;
     cursor.style.top = '0';
     cursor.style.left = '0';
     cursor.style.transform = 
         `translate( calc(${x}px - 120%), calc(${y}px - 160%))`;
-    
 }
     
 
 
-function changeHoverStyle( areaSelector, hoverSelector, cursorSelector ){
-    let area = document.querySelector(areaSelector);
+function changeHoverStyle( elements, hoverSelector ){
+    let { area, hover, cursor} = elements;
     let hoverItems = document.querySelectorAll(hoverSelector);
-    let cursor = document.querySelector(cursorSelector)
 
     hoverItems.forEach(hover => {
         hover.addEventListener('mouseover', function(e){
@@ -99,35 +97,40 @@ function changeHoverStyle( areaSelector, hoverSelector, cursorSelector ){
     })
   
 }
-changeHoverStyle('#dropdown-body','.u-drop', '#cursor-drop');
+changeHoverStyle(mouseValues1,'.u-drop');
 
 
-function handleMouseOut(cursorSelector, areaSelector) {
-    let cursor = document.querySelector(cursorSelector);
-    let area = document.querySelector(areaSelector)
+function handleMouseOut(elements) {
+    let {area, hover, cursor} = elements;
+
     area.addEventListener('mouseleave', function(e){
         cursor.style.top = '20%';
         cursor.style.left = '90%';
         cursor.style.transform = 'translate(0)'; 
-        
-              
     })
 }
-handleMouseOut('#cursor-drop','#dropdown-body');
+handleMouseOut(mouseValues1);
 
-function handleMouseDown(cursorSelector, areaSelector) {
-    let cursor = document.querySelector(cursorSelector);
-    let area = document.querySelector(areaSelector)
+
+function handleMouseDown(elements) {
+    let { area, hover, cursor} = elements;
 
     area.addEventListener('mousedown', function(e){
         cursor.classList.add('drag');
-        console.log('drag')
-    })
-
+        console.log('mouse press')
+    })  
 }
-
-handleMouseDown('#cursor-drop', '#dropdown-body')
-
+handleMouseDown(mouseValues1);
 
 
+function handleMouseUp(elements) {
+    let { area, hover, cursor} = elements;
+
+    area.addEventListener('mouseup', function(e){
+        cursor.classList.remove('drag');
+        console.log('mouse release')
+       
+    })  
+}
+handleMouseUp(mouseValues1);
 
