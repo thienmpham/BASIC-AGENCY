@@ -28,9 +28,7 @@ function dropdownAnimation() {
 }
 dropdownAnimation();
 
-// Destructuring assignment using objects in functions
 let mouseValues1 = initializeMouseValues('#dropdown-body', '.a-drop', '#cursor-drop');
-
 
 
 
@@ -62,20 +60,27 @@ onMouseMove(mouseValues1);
 
 
 function getMousePosition(event) {
-  
-    let x = event.clientX;
-    let y = event.clientY;
+    
+    // let x = event.clientX;
+    // let y = event.clientY;
       
-   changeMouseStyle(mouseValues1, x, y);
+   changeMouseStyle(mouseValues1);
+
 }
 
 
-function changeMouseStyle(elements, x, y) { 
+function changeMouseStyle(elements) { 
     let { area, hover, cursor} = elements;
     cursor.style.top = '0';
     cursor.style.left = '0';
     cursor.style.transform = 
-        `translate( calc(${x}px - 120%), calc(${y}px - 160%))`;
+        `translate( calc(${event.clientX}px - 120%), calc(${event.clientY}px - 160%))`;
+    
+    if(cursor.classList.contains('drag')) {
+        cursor.style.transform = 
+        `translate( calc(${event.clientX}px - 120%), calc(${event.clientY}px - 160%)) scale(0.6)`;
+        console.log('drag is moving');
+    }
 }
     
 
@@ -112,12 +117,15 @@ function handleMouseOut(elements) {
 handleMouseOut(mouseValues1);
 
 
-function handleMouseDown(elements) {
+function handleMouseDown(elements, x, y) {
     let { area, hover, cursor} = elements;
+    
 
     area.addEventListener('mousedown', function(e){
         cursor.classList.add('drag');
-        console.log('mouse press')
+        console.log('mouse press');
+
+        changeMouseStyle(mouseValues1);
     })  
 }
 handleMouseDown(mouseValues1);
@@ -128,8 +136,9 @@ function handleMouseUp(elements) {
 
     area.addEventListener('mouseup', function(e){
         cursor.classList.remove('drag');
-        console.log('mouse release')
+        changeMouseStyle(mouseValues1);
        
+
     })  
 }
 handleMouseUp(mouseValues1);

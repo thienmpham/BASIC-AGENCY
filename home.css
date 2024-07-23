@@ -253,7 +253,16 @@
         overflow-x: scroll;
         transform: translateX(10%);
         overflow-y: hidden;
+        user-select: none;
        
+    }
+    #dropdown-body img {
+         
+        user-select: none;
+        -moz-user-select: none;
+        -webkit-user-drag: none;
+        -webkit-user-select: none;
+        -ms-user-select: none;
     }
     #dropdown-body:hover {
         /* cursor: none; */
@@ -275,10 +284,13 @@
         pointer-events: none;
         transition-duration: 200ms;
         transition-timing-function: ease-out;
+       
         
    }
    #cursor-drop.drag {
-        transform: scale(0.2);
+        /* transform: scale(0.7); */
+        transition-duration: 200ms;
+        transition-timing-function: ease-out;
         
    }
 
