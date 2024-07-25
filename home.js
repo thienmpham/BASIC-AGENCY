@@ -60,11 +60,10 @@ onMouseMove(mouseValues1);
 
 
 function getMousePosition(event) {
-    
-    // let x = event.clientX;
-    // let y = event.clientY;
-      
    changeMouseStyle(mouseValues1);
+
+   
+   handleScrollLeft(event, mouseValues1);
 
 }
 
@@ -126,6 +125,7 @@ function handleMouseDown(elements, x, y) {
         console.log('mouse press');
 
         changeMouseStyle(mouseValues1);
+       
     })  
 }
 handleMouseDown(mouseValues1);
@@ -143,3 +143,15 @@ function handleMouseUp(elements) {
 }
 handleMouseUp(mouseValues1);
 
+
+function handleScrollLeft(e, elements) {
+    let { area, hover, cursor } = elements;
+    let width = area.offsetWidth;
+    if( cursor.classList.contains('drag') && (e.clientX > width/2) ) {
+        area.scrollLeft -= 10;
+        console.log(e.clientX)
+    }
+    if( cursor.classList.contains('drag') && (e.clientX < width/2) ) {
+        area.scrollLeft += 10;
+    }
+}
