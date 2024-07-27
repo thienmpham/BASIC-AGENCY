@@ -73,11 +73,11 @@ function changeMouseStyle(elements) {
     cursor.style.top = '0';
     cursor.style.left = '0';
     cursor.style.transform = 
-        `translate( calc(${event.clientX}px - 120%), calc(${event.clientY}px - 160%))`;
+        `translate( calc(${event.clientX}px - 50%), calc(${event.clientY}px - 180%))`;
     
     if(cursor.classList.contains('drag')) {
         cursor.style.transform = 
-        `translate( calc(${event.clientX}px - 120%), calc(${event.clientY}px - 160%)) scale(0.6)`;
+        `translate( calc(${event.clientX}px - 50%), calc(${event.clientY}px - 180%)) scale(0.6)`;
         console.log('drag is moving');
     }
 }
@@ -111,6 +111,7 @@ function handleMouseOut(elements) {
         cursor.style.top = '20%';
         cursor.style.left = '90%';
         cursor.style.transform = 'translate(0)'; 
+        cursor.classList.remove('drag');
     })
 }
 handleMouseOut(mouseValues1);
@@ -147,11 +148,16 @@ handleMouseUp(mouseValues1);
 function handleScrollLeft(e, elements) {
     let { area, hover, cursor } = elements;
     let width = area.offsetWidth;
-    if( cursor.classList.contains('drag') && (e.clientX > width/2) ) {
-        area.scrollLeft -= 10;
-        console.log(e.clientX)
+    // if( cursor.classList.contains('drag') && (e.clientX > width/2) ) {
+    //     area.scrollLeft -= 10;
+    //     console.log(e.clientX)
+    // }
+    // if( cursor.classList.contains('drag') && (e.clientX < width/2) ) {
+    //     area.scrollLeft += 10;
+    // }   
+
+    if( cursor.classList.contains('drag')) {
+        area.scrollLeft = e.pageX / 1.5;
     }
-    if( cursor.classList.contains('drag') && (e.clientX < width/2) ) {
-        area.scrollLeft += 10;
-    }
+    
 }
