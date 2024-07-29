@@ -249,12 +249,12 @@
         display: flex;
         padding: 0 5rem 0 0;
 
-        
         position: relative;
         overflow-x: scroll;
         transform: translateX(10%);
         overflow-y: hidden;
         user-select: none;
+        scroll-behavior: smooth;
        
     }
     #dropdown-body img {

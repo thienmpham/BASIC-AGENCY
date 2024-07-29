@@ -54,18 +54,16 @@ getMouseValues(mouseValues1);
 
 function onMouseMove(elements) {
     let { area, hover, cursor} = elements;
-    area.addEventListener('mousemove', getMousePosition);
+    area.addEventListener('mousemove', function(e){
+        changeMouseStyle(elements);
+    });
 }
 onMouseMove(mouseValues1);
 
 
-function getMousePosition(event) {
-   changeMouseStyle(mouseValues1);
-
-   
-   handleScrollLeft(event, mouseValues1);
-
-}
+// function getMousePosition(event) {
+//    changeMouseStyle(mouseValues1);
+// }
 
 
 function changeMouseStyle(elements) { 
@@ -79,6 +77,8 @@ function changeMouseStyle(elements) {
         cursor.style.transform = 
         `translate( calc(${event.clientX}px - 50%), calc(${event.clientY}px - 180%)) scale(0.6)`;
         console.log('drag is moving');
+        console.log(leftScrollValues)
+        
     }
 }
     
@@ -125,12 +125,35 @@ function handleMouseDown(elements, x, y) {
         cursor.classList.add('drag');
         console.log('mouse press');
 
+
         changeMouseStyle(mouseValues1);
+
+        let x = e.pageX;
+        initializeLeftScroll(x, mouseValues1);
+        
+        
        
     })  
 }
 handleMouseDown(mouseValues1);
 
+function initializeLeftScroll(xSelector, elements) {
+    
+    let x = xSelector;
+    let { area, hover, cursor} = elements;
+
+
+    let startX = x - area.offsetLeft;
+    let scrollLeft = area.scrollLeft;
+    
+
+    return {
+        startX: startX,
+        scrollLeft: scrollLeft,
+    }
+}
+
+let leftScrollValues = initializeLeftScroll(x, mouseValues1);
 
 function handleMouseUp(elements) {
     let { area, hover, cursor} = elements;
@@ -138,26 +161,23 @@ function handleMouseUp(elements) {
     area.addEventListener('mouseup', function(e){
         cursor.classList.remove('drag');
         changeMouseStyle(mouseValues1);
-       
-
     })  
 }
 handleMouseUp(mouseValues1);
 
 
-function handleScrollLeft(e, elements) {
-    let { area, hover, cursor } = elements;
-    let width = area.offsetWidth;
-    // if( cursor.classList.contains('drag') && (e.clientX > width/2) ) {
-    //     area.scrollLeft -= 10;
-    //     console.log(e.clientX)
-    // }
-    // if( cursor.classList.contains('drag') && (e.clientX < width/2) ) {
-    //     area.scrollLeft += 10;
-    // }   
 
-    if( cursor.classList.contains('drag')) {
-        area.scrollLeft = e.pageX / 1.5;
-    }
+function handleScrollLeft(e, elements) {
+    let { area, hover, cursor} = elements;
+    
+    if( !cursor.classList.contains('drag')) return; 
+    
+    let x = e.pageX - area.offsetLeft;
+    let walk = startX * 3; //scroll-fast
+    startX = startXSelector
+    area.scrollLeft = scrollLeft - walk;
+
+    console.log(walk , scrollLeft, 'startX:', startX)
+        
     
 }
