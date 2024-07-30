@@ -17,7 +17,7 @@ function dropdownAnimation() {
 
     dropdownBtn.addEventListener('click', function(){
             animation.classList.add('slider');  
-            dropdownBody.classList.add('slider')      
+            dropdownBody.classList.add('slider');      
     })
 
     exitBtn.addEventListener('click', function(){
@@ -28,9 +28,8 @@ function dropdownAnimation() {
 }
 dropdownAnimation();
 
+
 let mouseValues1 = initializeMouseValues('#dropdown-body', '.a-drop', '#cursor-drop');
-
-
 
 function initializeMouseValues(areaSelector, hoverSelector, cursorSelector) {
     let area = document.querySelector(areaSelector);
@@ -55,7 +54,8 @@ getMouseValues(mouseValues1);
 function onMouseMove(elements) {
     let { area, hover, cursor} = elements;
     area.addEventListener('mousemove', function(e){
-        changeMouseStyle(elements);
+        changeMouseStyle(mouseValues1);
+     
     });
 }
 onMouseMove(mouseValues1);
@@ -77,7 +77,6 @@ function changeMouseStyle(elements) {
         cursor.style.transform = 
         `translate( calc(${event.clientX}px - 50%), calc(${event.clientY}px - 180%)) scale(0.6)`;
         console.log('drag is moving');
-        console.log(leftScrollValues)
         
     }
 }
@@ -117,7 +116,7 @@ function handleMouseOut(elements) {
 handleMouseOut(mouseValues1);
 
 
-function handleMouseDown(elements, x, y) {
+function handleMouseDown(elements, callback) {
     let { area, hover, cursor} = elements;
     
 
@@ -128,22 +127,33 @@ function handleMouseDown(elements, x, y) {
 
         changeMouseStyle(mouseValues1);
 
-        let x = e.pageX;
-        initializeLeftScroll(x, mouseValues1);
+       
+       
+        // initializeLeftScroll(e, mouseValues1);
         
+        // let startX = e.pageX - area.offsetLeft;
+        // let scrollLeft = area.scrollLeft;
+        
+
+        // return {
+        //     startX: startX,
+        //     scrollLeft: scrollLeft,
+        // }
         
        
     })  
 }
 handleMouseDown(mouseValues1);
 
-function initializeLeftScroll(xSelector, elements) {
-    
-    let x = xSelector;
+
+
+
+
+
+function initializeLeftScroll( e, elements ) {
     let { area, hover, cursor} = elements;
 
-
-    let startX = x - area.offsetLeft;
+    let startX = e.pageX - area.offsetLeft;
     let scrollLeft = area.scrollLeft;
     
 
@@ -153,7 +163,7 @@ function initializeLeftScroll(xSelector, elements) {
     }
 }
 
-let leftScrollValues = initializeLeftScroll(x, mouseValues1);
+// let leftScrollValues = initializeLeftScroll(e, mouseValues1);
 
 function handleMouseUp(elements) {
     let { area, hover, cursor} = elements;
@@ -166,18 +176,98 @@ function handleMouseUp(elements) {
 handleMouseUp(mouseValues1);
 
 
-
-function handleScrollLeft(e, elements) {
+function handleScrollLeft(elements) {
+    
     let { area, hover, cursor} = elements;
-    
-    if( !cursor.classList.contains('drag')) return; 
-    
-    let x = e.pageX - area.offsetLeft;
-    let walk = startX * 3; //scroll-fast
-    startX = startXSelector
-    area.scrollLeft = scrollLeft - walk;
 
-    console.log(walk , scrollLeft, 'startX:', startX)
+    let isDown = false;
+    let startX;
+    let scrollLeft;
+
+    area.addEventListener('mousedown', (e) => {
+        isDown = true;
+        startX = e.pageX - area.offsetLeft;
+        scrollLeft = area.scrollLeft;
+    });
+
+    area.addEventListener('mouseleave', () => {
+        isDown = false;
+    });
+
+    area.addEventListener('mouseup', () => {
+        isDown = false;
+    });
+
+    area.addEventListener('mousemove', (e) => {
+        if(!isDown) return;
+        e.preventDefault();
+        const x = e.pageX - area.offsetLeft;
+        const walk = (x - startX) * 3; //scroll-fast
+        area.scrollLeft = scrollLeft - walk;
+        console.log('walk:',walk);
+        
+    });
         
     
 }
+// handleScrollLeft(mouseValues1)
+
+function handleVelocityScroll(elements) {
+    let { area, hover, cursor} = elements;
+    let isDown = false;
+    let startX;
+    let scrollLeft;
+  
+    area.addEventListener('mousedown', (e) => {
+        isDown = true;
+        startX = e.pageX - area.offsetLeft;
+        scrollLeft = area.scrollLeft;
+        cancelMomentumTracking();
+    });
+    
+    
+    area.addEventListener('mouseleave', () => {
+        isDown = false;
+    });
+    
+    
+    area.addEventListener('mouseup', () => {
+        isDown = false;
+        beginMomentumTracking();
+    });
+    
+    area.addEventListener('mousemove', (e) => {
+        if(!isDown) return;
+        e.preventDefault();
+        const x = e.pageX - area.offsetLeft;
+        const walk = (x - startX) * 3; //scroll-fast
+        var prevScrollLeft = area.scrollLeft;
+        area.scrollLeft = scrollLeft - walk;
+        velX = area.scrollLeft - prevScrollLeft;
+    });
+    
+    // Momentum 
+    
+    var velX = 0;
+    var momentumID;
+    
+    area.addEventListener('wheel', (e) => {
+        cancelMomentumTracking();
+    });  
+    
+    function beginMomentumTracking(){
+        cancelMomentumTracking();
+        momentumID = requestAnimationFrame(momentumLoop);
+    }
+    function cancelMomentumTracking(){
+        cancelAnimationFrame(momentumID);
+    }
+    function momentumLoop(){
+        area.scrollLeft += velX;
+        velX *= 0.95; 
+        if (Math.abs(velX) > 0.5){
+            momentumID = requestAnimationFrame(momentumLoop);
+        }
+    }
+}
+handleVelocityScroll(mouseValues1);
