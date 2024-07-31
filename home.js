@@ -124,46 +124,90 @@ function handleMouseDown(elements, callback) {
         cursor.classList.add('drag');
         console.log('mouse press');
 
-
         changeMouseStyle(mouseValues1);
-
-       
-       
-        // initializeLeftScroll(e, mouseValues1);
-        
-        // let startX = e.pageX - area.offsetLeft;
-        // let scrollLeft = area.scrollLeft;
         
 
-        // return {
-        //     startX: startX,
-        //     scrollLeft: scrollLeft,
-        // }
-        
        
     })  
 }
 handleMouseDown(mouseValues1);
 
 
-
-
-
-
-function initializeLeftScroll( e, elements ) {
+function scrollLeft(elements) {
     let { area, hover, cursor} = elements;
+    let startX;
+    let x; 
+    let walk;
+    let isDown = false;
+    let velX;
+    let scrollLeft;
 
-    let startX = e.pageX - area.offsetLeft;
-    let scrollLeft = area.scrollLeft;
-    
+    area.addEventListener('mousemove', function(e) {
+        if( !isDown ) return;
+        x = e.pageX;
+        // walk = x - startX;
+        
+        console.log('x:', x)
+       
+        // if( x < startX ) {
+        //     area.scrollLeft += 300;
+        
+        // }
+        // else {
+        //     area.scrollLeft += -300;
+        // }
 
-    return {
-        startX: startX,
-        scrollLeft: scrollLeft,
-    }
+        area.scrollLeft = scrollLeft - e.pageX;
+
+        var prevScrollLeft = area.scrollLeft; 
+        velX = area.scrollLeft - prevScrollLeft; 
+
+      
+    })
+    area.addEventListener('mousedown', function(e){
+        isDown = true;
+        startX = e.pageX;
+        scrollLeft = area.scrollLeft;
+        console.log('startX:', startX)
+        cancelMomentumTracking(); // Stop the drag momentum loop
+
+    })
+
+    area.addEventListener('mouseup', function(e){
+        isDown = false;
+        beginMomentumTracking();
+    })
+
+    // Listen for mouse wheel events
+    area.addEventListener('wheel', (e) => {
+        cancelMomentumTracking(); // Stop the drag momentum loop
+    });  
+
+    // Momentum
+    let momentumID; 
+    function beginMomentumTracking(){
+        cancelMomentumTracking();
+        momentumID = requestAnimationFrame(momentumLoop); 
+      }
+      
+      function cancelMomentumTracking(){
+        cancelAnimationFrame(momentumID);
+      }
+      
+      function momentumLoop(){
+        area.scrollLeft += velX; // Apply the velocity to the scroll position
+        velX *= 0.95; // Slow the velocity slightly
+
+        if (Math.abs(velX) > 0.5){ // Still moving?
+          momentumID = requestAnimationFrame(momentumLoop); // Keep looping 
+        }
+      }
+
+  
+
 }
+scrollLeft(mouseValues1);
 
-// let leftScrollValues = initializeLeftScroll(e, mouseValues1);
 
 function handleMouseUp(elements) {
     let { area, hover, cursor} = elements;
@@ -203,8 +247,17 @@ function handleScrollLeft(elements) {
         e.preventDefault();
         const x = e.pageX - area.offsetLeft;
         const walk = (x - startX) * 3; //scroll-fast
-        area.scrollLeft = scrollLeft - walk;
-        console.log('walk:',walk);
+        var prevScrollLeft = area.scrollLeft;
+        // area.scrollLeft = scrollLeft - walk;
+
+        if( (scrollLeft - walk) < 0 ) {
+            area.scrollLeft = scrollLeft * 10;
+            console.log(area.scrollLeft)
+        }
+        else {
+            area.scrollLeft += 1000;
+        }
+        // console.log('walk:', walk, 'scrollLeft:', area.scrollLeft)
         
     });
         
@@ -242,8 +295,18 @@ function handleVelocityScroll(elements) {
         const x = e.pageX - area.offsetLeft;
         const walk = (x - startX) * 3; //scroll-fast
         var prevScrollLeft = area.scrollLeft;
-        area.scrollLeft = scrollLeft - walk;
+        // area.scrollLeft = scrollLeft - walk;
+
+        if( (scrollLeft - walk) < 0 ) {
+            area.scrollLeft = -1000;
+        }
+        else {
+            area.scrollLeft = 1000;
+        }
         velX = area.scrollLeft - prevScrollLeft;
+        console.log('walk:', walk, 'scrollLeft:', area.scrollLeft)
+
+    
     });
     
     // Momentum 
@@ -258,16 +321,19 @@ function handleVelocityScroll(elements) {
     function beginMomentumTracking(){
         cancelMomentumTracking();
         momentumID = requestAnimationFrame(momentumLoop);
+        console.log('begin momentum');
     }
     function cancelMomentumTracking(){
         cancelAnimationFrame(momentumID);
+        console.log('cancel momentum');
     }
     function momentumLoop(){
         area.scrollLeft += velX;
         velX *= 0.95; 
         if (Math.abs(velX) > 0.5){
             momentumID = requestAnimationFrame(momentumLoop);
+            console.log('momentum > 0.5')
         }
     }
 }
-handleVelocityScroll(mouseValues1);
+// handleVelocityScroll(mouseValues1);
