@@ -137,30 +137,28 @@ function scrollLeft(elements) {
     let { area, hover, cursor} = elements;
     let startX;
     let x; 
-    let walk;
     let isDown = false;
-    let velX;
     let scrollLeft;
+
+    area.addEventListener('mouseleave', function(e) {
+        isDown = false;
+    });
 
     area.addEventListener('mousemove', function(e) {
         if( !isDown ) return;
         x = e.pageX;
-        // walk = x - startX;
+        let walk = (x - startX) * 1 ;
         
-        console.log('x:', x)
+    
        
-        // if( x < startX ) {
-        //     area.scrollLeft += 300;
-        
-        // }
-        // else {
-        //     area.scrollLeft += -300;
-        // }
 
         area.scrollLeft = scrollLeft - e.pageX;
 
         var prevScrollLeft = area.scrollLeft; 
+
+        area.scrollLeft = scrollLeft - walk;
         velX = area.scrollLeft - prevScrollLeft; 
+        console.log(velX)
 
       
     })
@@ -184,7 +182,8 @@ function scrollLeft(elements) {
     });  
 
     // Momentum
-    let momentumID; 
+    var momentumID; 
+    let velX;
     function beginMomentumTracking(){
         cancelMomentumTracking();
         momentumID = requestAnimationFrame(momentumLoop); 
@@ -197,13 +196,10 @@ function scrollLeft(elements) {
       function momentumLoop(){
         area.scrollLeft += velX; // Apply the velocity to the scroll position
         velX *= 0.95; // Slow the velocity slightly
-
         if (Math.abs(velX) > 0.5){ // Still moving?
           momentumID = requestAnimationFrame(momentumLoop); // Keep looping 
         }
       }
-
-  
 
 }
 scrollLeft(mouseValues1);
