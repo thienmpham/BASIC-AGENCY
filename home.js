@@ -146,21 +146,35 @@ function scrollLeft(elements) {
 
     area.addEventListener('mousemove', function(e) {
         if( !isDown ) return;
-        x = e.pageX;
-        let walk = (x - startX) * 1 ;
-        
-    
+        x = e.pageX;   
        
-
-        area.scrollLeft = scrollLeft - e.pageX;
+        let totalX = startX - x; 
+        let walk = (x - startX) * 1 ;
+        // area.scrollLeft = scrollLeft - e.pageX;
 
         var prevScrollLeft = area.scrollLeft; 
 
-        area.scrollLeft = scrollLeft - walk;
-        velX = area.scrollLeft - prevScrollLeft; 
-        console.log(velX)
+        if ( totalX >= 500 ) {
+            area.scrollLeft = 500;
+            console.log('scroll is too big ')
+        }
+        // if ( x <= 200 ) {
+        //     area.scrollLeft = 100;
+        //     console.log('scroll is too small ')
+        // }
+        else {
+            area.scrollLeft = scrollLeft - walk;
+        }
 
-      
+    
+        
+        velX = area.scrollLeft - prevScrollLeft; 
+        console.log('startX:', startX)
+        console.log('x:', x)
+
+     
+        
+       
     })
     area.addEventListener('mousedown', function(e){
         isDown = true;
@@ -194,7 +208,7 @@ function scrollLeft(elements) {
       }
       
       function momentumLoop(){
-        area.scrollLeft += velX; // Apply the velocity to the scroll position
+        area.scrollLeft += velX * 2; // Apply the velocity to the scroll position
         velX *= 0.95; // Slow the velocity slightly
         if (Math.abs(velX) > 0.5){ // Still moving?
           momentumID = requestAnimationFrame(momentumLoop); // Keep looping 
@@ -203,6 +217,9 @@ function scrollLeft(elements) {
 
 }
 scrollLeft(mouseValues1);
+
+
+
 
 
 function handleMouseUp(elements) {
