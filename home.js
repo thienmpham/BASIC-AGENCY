@@ -61,9 +61,7 @@ function onMouseMove(elements) {
 onMouseMove(mouseValues1);
 
 
-// function getMousePosition(event) {
-//    changeMouseStyle(mouseValues1);
-// }
+
 
 
 function changeMouseStyle(elements) { 
@@ -148,32 +146,17 @@ function scrollLeft(elements) {
         if( !isDown ) return;
         x = e.pageX;   
        
-        let totalX = startX - x; 
-        let walk = (x - startX) * 1 ;
-        // area.scrollLeft = scrollLeft - e.pageX;
+        let totalX = x - startX; 
+        let walk = (x - startX) * 1;
 
         var prevScrollLeft = area.scrollLeft; 
-
-        if ( totalX >= 500 ) {
-            area.scrollLeft = 500;
-            console.log('scroll is too big ')
-        }
-        // if ( x <= 200 ) {
-        //     area.scrollLeft = 100;
-        //     console.log('scroll is too small ')
-        // }
-        else {
-            area.scrollLeft = scrollLeft - walk;
-        }
-
-    
+        
+        console.log(area.scrollLeft)
+        area.scrollLeft = scrollLeft - walk;
         
         velX = area.scrollLeft - prevScrollLeft; 
-        console.log('startX:', startX)
-        console.log('x:', x)
+        console.log('walk:',walk);
 
-     
-        
        
     })
     area.addEventListener('mousedown', function(e){

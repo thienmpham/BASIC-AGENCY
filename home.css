@@ -180,9 +180,13 @@
         font-weight: 100;
         z-index: 998;
         visibility: hidden;
+        opacity: 0;
+        transition: all 0.5s ease;
     }
    #dropdown-page.visible {
         visibility: visible;
+        opacity: 1;
+        transition: opacity 1s ease;
    }
    #animation-slide {
         width: 100%;
@@ -197,7 +201,7 @@
    }
    #dropdown-body.slider {
         transform: translateX(0);
-      
+        
         transition: transform 1s cubic-bezier(0.77,0,0.175,1);
    }
  
