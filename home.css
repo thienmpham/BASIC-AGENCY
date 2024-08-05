@@ -258,7 +258,6 @@
         transform: translateX(10%);
         overflow-y: hidden;
         user-select: none;
-        /* scroll-behavior: smooth; */
        
     }
     #dropdown-body img {
@@ -272,24 +271,25 @@
     #dropdown-body:hover {
         /* cursor: none; */
     }
-
-   #cursor-drop {
-        position: sticky;
+    .cursor-container {
         width: 7rem;
         height: 7rem;
-        background-color: #f9cdcd;
         z-index: 2;
         border-radius: 50%;
         text-align: center;
         display: flex;
+        flex-direction: column;
         justify-content: center;
-        left: 0;
-        top: 20%;
-        left: 90%;
         pointer-events: none;
         transition-duration: 200ms;
         transition-timing-function: ease-out;
- 
+        position: relative;
+    }
+   #cursor-drop {
+        position: sticky;
+        background-color: #f9cdcd;
+        top: 20%;
+        left: 90%;
    }
    #cursor-drop.drag {
         /* transform: scale(0.7); */
@@ -302,7 +302,7 @@
         visibility: hidden;
    }
   
-   #cursor-drop span{
+   .cursor-container span{
         color: #252422;
         padding: 2rem;
         font-weight: bold;
@@ -314,6 +314,7 @@
    .cursor {
         position: relative;
         display: flex;
+        
    }
 
    .caret-container {
@@ -494,10 +495,13 @@
     }
     
     /* VIDEO CSS */
+
     #video-container {
+        display: flex;
         width: 100%;
         max-height: 80%;
-        overflow: hidden;
+        /* overflow: hidden; */
+        position: relative;
         
     
     }
@@ -505,10 +509,38 @@
         display: flex;
         align-items: center;
         width: 100%;
+        /* position: absolute; */
         
     }
   
-   
+    #cursor-video {
+        background-color: white;
+        position: sticky;
+        left: 50%;
+        top: 50%;
+        font-size: 0.9rem;
+        z-index: 2;
+        margin-top: -7rem;
+       
+    }
+    #cursor-video_content {
+        position: relative;
+       
+    }
+    #span-video {
+        position: absolute;
+        top: calc(100% + 1rem);
+        color: white;
+        font-size: 0.9rem;
+        padding: 0;
+        font-weight: 500;
+    }
+    .cursor {
+        justify-content: center;
+
+    }
+  
+
 
 
 }

@@ -30,6 +30,7 @@ dropdownAnimation();
 
 
 let mouseValues1 = initializeMouseValues('#dropdown-body', '.a-drop', '#cursor-drop');
+let mouseValues2 = initializeMouseValues('#video-container', '.a-drop', '#cursor-video');
 
 function initializeMouseValues(areaSelector, hoverSelector, cursorSelector) {
     let area = document.querySelector(areaSelector);
@@ -43,37 +44,35 @@ function initializeMouseValues(areaSelector, hoverSelector, cursorSelector) {
     }
 }
 
-function getMouseValues(elements) {
-    let { area, hover, cursor} = elements;
-    console.log(area)
-}
-getMouseValues(mouseValues1);
-
-
 
 function onMouseMove(elements) {
     let { area, hover, cursor} = elements;
     area.addEventListener('mousemove', function(e){
-        changeMouseStyle(mouseValues1);
+        changeMouseStyle(mouseValues1, '50', '180');
+        changeMouseStyle(mouseValues2, '50', '40');
      
     });
 }
 onMouseMove(mouseValues1);
+onMouseMove(mouseValues2);
 
 
 
 
 
-function changeMouseStyle(elements) { 
+
+function changeMouseStyle(elements, numX, numY) { 
     let { area, hover, cursor} = elements;
+    let x = numX;
+    let y = numY;
     cursor.style.top = '0';
     cursor.style.left = '0';
     cursor.style.transform = 
-        `translate( calc(${event.clientX}px - 50%), calc(${event.clientY}px - 180%))`;
+        `translate( calc(${event.clientX}px - ${x}%), calc(${event.clientY}px - ${y}%))`;
     
     if(cursor.classList.contains('drag')) {
         cursor.style.transform = 
-        `translate( calc(${event.clientX}px - 50%), calc(${event.clientY}px - 180%)) scale(0.6)`;
+        `translate( calc(${event.clientX}px - ${x}%), calc(${event.clientY}px - ${y}%)) scale(0.6)`;
         console.log('drag is moving');
         
     }
