@@ -105,15 +105,16 @@ function handleMouseOut(elements, numX, numY) {
     let {area, hover, cursor} = elements;
     let x = numX;
     let y = numY;
-    area.addEventListener('mouseleave', function(e){
+    area.addEventListener('mouseleave', function(e){ 
         cursor.style.top = `${x}%`;
         cursor.style.left = `${y}%`;
-        cursor.style.transform = 'translate(0)'; 
+        cursor.style.transform = 'translate(0)';
         cursor.classList.remove('drag');
     })
 }
 handleMouseOut(mouseValues1, '20', '90');
-handleMouseOut(mouseValues2, '40', '50');
+handleMouseOut(mouseValues2, '30', '50');
+
 
 
 function handleMouseDown(elements, callback) {
