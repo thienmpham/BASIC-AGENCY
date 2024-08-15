@@ -47,7 +47,7 @@
         display: block;
         height: 1px;
         border: 0;
-        border-top: 2px solid #ccc;
+        border-top: 1px solid #000000;
         padding: 0;
        
     }
@@ -605,7 +605,7 @@
         padding: 0 3rem;
 
     }
-    #section-work hr {
+    #hor-line-work_top {
         margin-bottom: 5rem;
     }
     #work-info_container {
@@ -621,6 +621,7 @@
     #work-info_container img {
         width: 40%;
         margin: 0 0 0 auto;
+        transition: transform 0.5s ease; 
     }
     #work-info_text-container button{
         padding: 0.6rem 2rem;
@@ -634,17 +635,22 @@
         margin-top: 4rem;
         display: flex;
         justify-content: space-between;
+        overflow: hidden;
        
-
+        
     }
     .work-gallery {
         display: flex;
         flex-direction: column;
         width: 32%;
+        
         overflow: hidden;
+        
+        
+       
     }
-    .work-gallery:hover > .work-gallery_image-container > img  {
-        transform: scale(0.9);
+    .work-gallery:hover > .work-gallery_asset-container > img  {
+        transform: scale(1);
         transition: transform 0.5s ease; 
     }
     .work-gallery_text-container {
@@ -661,16 +667,58 @@
         max-width: 45%;
         font-weight: 300;
     }
-    .work-gallery_image-container {
+    .work-gallery_asset-container { 
         overflow: hidden;
         display: flex;
         justify-content: center;
-        height: 60%;
+        height: 74%;
+      
+        
+        
     }
-    .work-gallery_image-container img {
+    .work-gallery_asset-container img {
+        transform: scale(1.1);
+        transition: transform 0.5s;
+        width: 100%;
        
-        object-fit: cover;
     }
+    .work-gallery_asset-container video {
+        object-fit: cover;
+        width: 100%;
+
+    }
+    /* engage section css  */
+    #section-engage {
+        padding: 0 3rem;
+    }
+        /* horizontal line */
+    #hor-line-engage_bottom {
+        margin-bottom: 1rem;
+    }
+    #hor-line-num_container {
+        display: flex;
+        width: 100%;
+        font-weight: 300;
+        font-size: 0.8rem;
+    }
+    #hor-line-num_left {
+        width: 40%;
+    }
+    #hor-line-num_right {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+    }
+    .dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background-color: #000000;
+        display: inline-block;
+        
+        
+    }
+
     
 }
 
@@ -745,6 +793,8 @@
             flex-shrink: 0;
 
         }
+     
+
 
     }
 
