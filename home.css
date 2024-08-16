@@ -715,8 +715,14 @@
         border-radius: 50%;
         background-color: #000000;
         display: inline-block;
-        
-        
+    }
+    /* featured engagements  */
+    #header-featured {
+        margin-top: 10%;
+        font-size: 2.5rem;
+        text-transform: uppercase;
+        font-weight: bold;
+        width: 30%;
     }
 
     
@@ -793,7 +799,11 @@
             flex-shrink: 0;
 
         }
-     
+
+        /* featured engagements  */
+        #header-featured {
+            font-size: 1.5rem;
+       
 
 
     }
@@ -803,12 +813,21 @@
         #work-info_container p {
             width: 95%;
             font-size: 1.2rem;
-            
         }
+        .work-gallery_text-container h3 {
+            font-size: 0.7rem;
+        }
+        .work-gallery_text-container p {
+            font-size: 0.5rem;
+            line-height: 0.5rem;
+            max-width: 80%;
+        }
+   
     }
 
 
     
 
 
+}
 }
