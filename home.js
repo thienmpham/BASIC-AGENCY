@@ -32,6 +32,7 @@ dropdownAnimation();
 
 let mouseValues1 = initializeMouseValues('#dropdown-body', '.a-drop', '#cursor-drop');
 let mouseValues2 = initializeMouseValues('#video-container', '.a-drop', '#cursor-video');
+let mouseValues3 = initializeMouseValues('#featured-card_container', '.span-here', '#featured-card_cursor');
 
 function initializeMouseValues(areaSelector, hoverSelector, cursorSelector) {
     let area = document.querySelector(areaSelector);
@@ -51,11 +52,13 @@ function onMouseMove(elements) {
     area.addEventListener('mousemove', function(e){
         changeMouseStyle(mouseValues1, '50', '180');
         changeMouseStyle(mouseValues2, '50', '40');
+        changeMouseStyle(mouseValues3, '80', '210');
      
     });
 }
 onMouseMove(mouseValues1);
 onMouseMove(mouseValues2);
+onMouseMove(mouseValues3);
 
 
 
@@ -66,6 +69,7 @@ function changeMouseStyle(elements, numX, numY) {
     let { area, hover, cursor} = elements;
     let x = numX;
     let y = numY;
+   
     cursor.style.top = '0';
     cursor.style.left = '0';
     cursor.style.transform = 
@@ -99,6 +103,7 @@ function changeHoverStyle( elements, hoverSelector ){
   
 }
 changeHoverStyle(mouseValues1,'.u-drop');
+changeHoverStyle(mouseValues3, '.span-here');
 
 
 function handleMouseOut(elements, numX, numY) {
@@ -114,6 +119,7 @@ function handleMouseOut(elements, numX, numY) {
 }
 handleMouseOut(mouseValues1, '20', '90');
 handleMouseOut(mouseValues2, '30', '50');
+handleMouseOut(mouseValues3, '20', '90');
 
 
 
@@ -123,13 +129,12 @@ function handleMouseDown(elements, callback) {
     area.addEventListener('mousedown', function(e){
         cursor.classList.add('drag');
 
-        changeMouseStyle(mouseValues1);
-        
-
-       
+        // changeMouseStyle(mouseValues1);
+        // changeMouseStyle(mouseValues3);
     })  
 }
 handleMouseDown(mouseValues1);
+handleMouseDown(mouseValues3);
 
 
 
@@ -203,6 +208,7 @@ function scrollLeft(elements) {
 
 }
 scrollLeft(mouseValues1);
+scrollLeft(mouseValues3);
 
 
 
@@ -217,6 +223,7 @@ function handleMouseUp(elements) {
     })  
 }
 handleMouseUp(mouseValues1);
+handleMouseUp(mouseValues3);
 
 
 

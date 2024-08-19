@@ -730,12 +730,14 @@
     #featured-card_container {
         display: flex;
         overflow-x: scroll;
+        padding-bottom: 5%;
         
     }
     .featured-card {
         word-wrap: break-word;
-        width: 33%;
+        width: 24%;
         padding-right: 7%;
+        flex-shrink: 0;
        
     }
     .featured-card-img_container {
@@ -746,6 +748,12 @@
     
     .featured-card-img_container img {
         height: 100%;
+        user-drag: none;
+        -webkit-user-drag: none;
+        user-select: none;
+        -moz-user-select: none;
+        -webkit-user-select: none;
+        -ms-user-select: none;
     }
     .featured-card-text_container {
         padding-top: 20%;
@@ -765,10 +773,22 @@
         font-size: 1.3rem;
         text-transform: uppercase;
         font-weight: bold;
+        user-drag: none;
+        -webkit-user-drag: none;
+        user-select: none;
+        -moz-user-select: none;
+        -webkit-user-select: none;
+        -ms-user-select: none;
     }
     .featured-card-text_container p {
         line-height: 150%;
         font-size: 1.1rem;
+        user-drag: none;
+        -webkit-user-drag: none;
+        user-select: none;
+        -moz-user-select: none;
+        -webkit-user-select: none;
+        -ms-user-select: none;
     }
     .span-here {
         text-decoration: underline;
@@ -777,6 +797,29 @@
     .span-here:hover {
         cursor: pointer;
     }
+    #featured-card_cursor {
+        position: sticky;
+        background-color: #f9cdcd;
+        top: 20%;
+        left: 90%;
+        transition-duration: 200ms;
+        transition-timing-function: ease-out;
+   }
+   #featured-card_cursor.drag {
+        /* transform: scale(0.7); */
+        transition-duration: 200ms;
+        transition-timing-function: ease-out;
+        
+   }
+   #featured-card_cursor.drag > .cursor > .caret-container + span {
+        visibility: hidden;
+   }
+   #featured-card_cursor.drag > .cursor > .caret-container {
+        /* width: 20rem; */
+        transform: translate(-50%, -50%) scale(2);
+        transform-origin: center;
+        transition: transform 0.2s cubic-bezier(0.77,0,0.175,1); 
+    } 
 
 
 
@@ -858,10 +901,7 @@
         /* featured engagements  */
         #header-featured {
             font-size: 1.5rem;
-       
-
-
-    }
+        }
 
     @media (max-width: 650px){
         /* WORK SECTION */
