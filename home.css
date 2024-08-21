@@ -258,7 +258,7 @@
     #dropdown-body {
         display: flex;
         padding: 0 5rem 0 0;
-
+        cursor: none;
         position: relative;
         overflow-x: scroll;
         transform: translateX(10%);
@@ -517,6 +517,7 @@
         width: 100%;
         position: absolute;   
         overflow: clip;
+        cursor: none;
         
         
     }
@@ -692,7 +693,7 @@
     }
     /* engage section css  */
     #section-engage {
-        padding: 0 3rem;
+       
     }
         /* horizontal line */
     #hor-line-engage_bottom {
@@ -726,11 +727,13 @@
         text-transform: uppercase;
         font-weight: bold;
         width: 30%;
+        padding: 0 3rem;
     }
     #featured-card_container {
         display: flex;
         overflow-x: scroll;
         padding-bottom: 5%;
+        cursor: none;
         
     }
     .featured-card {
@@ -803,12 +806,13 @@
         top: 20%;
         left: 90%;
         transition-duration: 200ms;
-        transition-timing-function: ease-out;
+        transition-timing-function: linear;
+        
    }
    #featured-card_cursor.drag {
         /* transform: scale(0.7); */
         transition-duration: 200ms;
-        transition-timing-function: ease-out;
+        transition-timing-function: linear;
         
    }
    #featured-card_cursor.drag > .cursor > .caret-container + span {
@@ -820,8 +824,46 @@
         transform-origin: center;
         transition: transform 0.2s cubic-bezier(0.77,0,0.175,1); 
     } 
-
-
+    /* about section */
+    #section-about {
+        padding: 0 3rem;
+    }
+    #about-container {
+        display: flex;
+    }
+    #about-text_container {
+        width: 60%;
+        text-transform: uppercase;
+       
+    }
+    #about-text_container h1 {
+        font-size: 6rem;
+        letter-spacing: -0.3rem;
+        line-height: .9;
+        margin: 0;
+    }
+    #label-spotlight {
+        display: block;
+        margin: 3% 0 6% 0;
+    } 
+    #about-text_container button {
+        border: 0.1rem solid #f9cdcd;
+        border-radius: 1.5rem;
+        padding: 0.4rem 1.5rem;
+        color: currentColor;
+    }
+    #about-text_button {
+        font-size: 0.8rem;
+        font-weight: bold;
+    }
+    #about-video_container {
+        overflow: hidden;
+        margin-left: 5%;
+    }
+    #about-video_container video{
+        object-fit: cover;
+    }
+   
 
     
 }
@@ -866,6 +908,7 @@
 
         #dropdown-body {
             display: none;
+          
         }
 
         #dropdown-body-2 {
@@ -902,6 +945,9 @@
         #header-featured {
             font-size: 1.5rem;
         }
+        .featured-card {
+            width: 40%;
+        }
 
     @media (max-width: 650px){
         /* WORK SECTION */
@@ -917,7 +963,14 @@
             line-height: 0.5rem;
             max-width: 80%;
         }
-   
+        /* featured engagements  */
+        .featured-card {
+            width: 60%;
+        }
+        .featured-card-text_container p{
+            font-size: 80%;
+        }
+        
     }
 
 
