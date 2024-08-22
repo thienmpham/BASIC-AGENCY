@@ -225,5 +225,19 @@ function handleMouseUp(elements) {
 handleMouseUp(mouseValues1);
 handleMouseUp(mouseValues3);
 
+function addScrollEvent(areaSelector) {
+    let area = document.querySelector(areaSelector);
+    console.log(area)
+    window.addEventListener('scroll', function(){
+        if(area.getBoundingClientRect().top <= 0){
+            console.log("TRIGGER: top of div reached.");
+        }
+        //BOTTOM
+        if(area.getBoundingClientRect().bottom <= 0){
+            console.log("TRIGGER: bottom of div reached.");
+        }
+    })
+}
+addScrollEvent('#about-container');
 
 
