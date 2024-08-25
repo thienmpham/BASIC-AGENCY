@@ -225,19 +225,32 @@ function handleMouseUp(elements) {
 handleMouseUp(mouseValues1);
 handleMouseUp(mouseValues3);
 
-function addScrollEvent(areaSelector) {
+function addScrollEvent(areaSelector, textSelector) {
     let area = document.querySelector(areaSelector);
-    console.log(area)
+    let text = document.querySelector(textSelector);
     window.addEventListener('scroll', function(){
-        if(area.getBoundingClientRect().top <= 0){
-            console.log("TRIGGER: top of div reached.");
+        if(area.getBoundingClientRect().top <= 250){
+            console.log("TRIGGER: top of div reached.", area.getBoundingClientRect().top);
+            // document.body.style = 'background-color: black;';
+            document.body.classList.add('featuredAnim');
+            // text.style = 'position:sticky; top: 0;';
+        }
+        if(area.getBoundingClientRect().top > 250){
+            console.log("TRIGGER: top of div has left.", area.getBoundingClientRect().top);
+            // document.body.style = 'background-color: #f4f4f4;';
+            document.body.classList.remove('featuredAnim');
+            // text.style.position = 'static';
         }
         //BOTTOM
         if(area.getBoundingClientRect().bottom <= 0){
             console.log("TRIGGER: bottom of div reached.");
         }
+        
+        
     })
 }
-addScrollEvent('#about-container');
+addScrollEvent('#about-container', '#about-text_container');
+
+
 
 

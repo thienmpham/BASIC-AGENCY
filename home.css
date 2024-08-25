@@ -14,6 +14,7 @@
         overflow-x: clip;
         box-sizing: border-box;
         background-color: #f4f4f4;
+        transition: all 1s ease;
        
     }
     
@@ -631,6 +632,39 @@
         margin-top: 3rem;
         font-size: 0.7rem;
         text-wrap: nowrap;
+        position: relative;
+        overflow: hidden;
+        
+       
+    }
+    .button-anim span {
+        position:relative;
+        z-index: 10;
+    }
+
+    .button-anim a::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: black;
+        top: 0;
+        transform: translate( 0 , 100%);
+        bottom: -0.1rem;
+        transition: transform 0.2s ease-out;
+        z-index: 0;
+    }
+    .button-anim:hover  a::after {
+        transform: translate(0);
+    }
+    .button-anim:hover {
+        transition: all 0.2s;
+        color: white;
+    }
+    .button-anim:hover a {
+        color: white;
+      
     }
     #work-gallery_container {
         margin-top: 4rem;
@@ -827,7 +861,7 @@
     /* about section */
     #section-about {
         padding: 0 3rem;
-        margin-top: 5rem;
+        margin-top: 10rem;
     }
     #about-container {
         display: flex;
@@ -835,6 +869,8 @@
     #about-text_container {
         width: 60%;
         text-transform: uppercase;
+        position: sticky;
+       
        
     }
     #about-text_container h1 {
@@ -859,8 +895,25 @@
     }
     #about-video_container video{
         width: 90%;
+    }
+    body.featuredAnim {
+        background-color: #000000;
+        transition: all 1s ease;
+        color: #f9cdcd;
+
+    }
+    #button-anim_about span {
         
-        
+        transition: transform 0.2s ease-out;
+
+
+    }
+  
+    #button-anim_about:hover a {
+        color:black;
+    }
+    #button-anim_about a::after {
+        background-color:#f9cdcd;
     }
    
 
