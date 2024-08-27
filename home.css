@@ -869,9 +869,8 @@
     #about-text_container {
         width: 60%;
         text-transform: uppercase;
-        position: sticky;
-       
-       
+        overflow: hidden;
+  
     }
     #about-text_container h1 {
         font-size: 7vw;
@@ -883,7 +882,13 @@
         display: block;
         font-size: 1.5vw;
         margin: 7% 0 10% 0;
+        
     } 
+    #about-text {
+        
+        transform: matrix(1, 0, 0, 1, 0, 0);
+        
+    }
     
     #about-video_container {
         overflow: hidden;
@@ -915,6 +920,7 @@
     #button-anim_about a::after {
         background-color:#f9cdcd;
     }
+   
    
 
     
