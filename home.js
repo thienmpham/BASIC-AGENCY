@@ -245,7 +245,7 @@ function addScrollEvent(areaSelector, textSelector) {
         }
         //BOTTOM
         if(area.getBoundingClientRect().bottom <= 0){
-            console.log("TRIGGER: bottom of div reached.");
+            document.body.classList.remove('featuredAnim');
         }
         
         
