@@ -230,25 +230,38 @@ handleMouseUp(mouseValues3);
 function addScrollEvent(areaSelector, textSelector) {
     let area = document.querySelector(areaSelector);
     let text = document.querySelector(textSelector);
+
     window.addEventListener('scroll', function(){
+      
         if(area.getBoundingClientRect().top <= 250){
+            
+            
             console.log("TRIGGER: top of div reached.", area.getBoundingClientRect().top);
-            // document.body.style = 'background-color: black;';
+        
             document.body.classList.add('featuredAnim');
-            // text.style = 'position:sticky; top: 0;';
+            document.documentElement.style.setProperty('--border-color', '#f9cdcd');   
+            this.document.querySelector('#button_anim-news').classList.add('news');        
         }
         if(area.getBoundingClientRect().top > 250){
             console.log("TRIGGER: top of div has left.", area.getBoundingClientRect().top);
-            // document.body.style = 'background-color: #f4f4f4;';
+            
             document.body.classList.remove('featuredAnim');
-            // text.style.position = 'static';
+            document.documentElement.style.setProperty('--border-color', 'black');            
+            this.document.querySelector('#button_anim-news').classList.remove('news');        
+
         }
         //BOTTOM
         if(area.getBoundingClientRect().bottom <= 0){
             document.body.classList.remove('featuredAnim');
+            document.documentElement.style.setProperty('--border-color', 'black');  
+            this.document.querySelector('#button_anim-news').classList.remove('news');        
+
+
+            
+
         }
         
-        
+
     })
 }
 addScrollEvent('#about-container', '#about-text_container');

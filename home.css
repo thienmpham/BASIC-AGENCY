@@ -17,7 +17,9 @@
         transition: all 1s ease;
        
     }
-    
+    :root {
+        --border-color: black;
+    }
     html {
     width: 100%;
     height: 100%;
@@ -662,16 +664,17 @@
         bottom: -0.1rem;
         transition: transform 0.2s ease-out;
         z-index: 0;
+      
     }
     .button-anim:hover  a::after {
         transform: translate(0);
     }
     .button-anim:hover {
         transition: all 0.2s;
-        color: white;
+       
     }
     .button-anim:hover a {
-        color: white;
+        color: #f9cdcd;
       
     }
     #work-gallery_container {
@@ -914,7 +917,7 @@
     #button-anim_about span {
         
         transition: transform 0.2s ease-out;
-
+       
 
     }
   
@@ -923,6 +926,10 @@
     }
     #button-anim_about a::after {
         background-color:#f9cdcd;
+    }
+    #button-anim_a span {
+        background-color: transparent;
+        
     }
 
 
@@ -947,11 +954,20 @@
         align-items: center;
     }
     #button_anim-news:hover a{
-        color:black;
+        color:white;
+    }
+    #button_anim-news {
+        border: .1rem var(--border-color) solid;
+    }
+    .button-anim.news:hover > a > span {
+        color: black;
     }
     
     #button_anim-news a::after {
-        background-color:#f9cdcd;
+        /* background-color:#f9cdcd; */
+        background-color: var(--border-color);
+        
+        overflow: hidden;
     }
     .news-list_item {
         margin-top: 6%;
