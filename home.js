@@ -227,13 +227,13 @@ function handleMouseUp(elements) {
 handleMouseUp(mouseValues1);
 handleMouseUp(mouseValues3);
 
-function addScrollEvent(areaSelector, textSelector) {
+function addScrollEvent(areaSelector, textSelector, num) {
     let area = document.querySelector(areaSelector);
     let text = document.querySelector(textSelector);
 
     window.addEventListener('scroll', function(){
       
-        if(area.getBoundingClientRect().top <= 250){
+        if(area.getBoundingClientRect().top <= num){
             
             
             console.log("TRIGGER: top of div reached.", area.getBoundingClientRect().top);
@@ -242,7 +242,7 @@ function addScrollEvent(areaSelector, textSelector) {
             document.documentElement.style.setProperty('--border-color', '#f9cdcd');   
             this.document.querySelector('#button_anim-news').classList.add('news');        
         }
-        if(area.getBoundingClientRect().top > 250){
+        if(area.getBoundingClientRect().top > num){
             console.log("TRIGGER: top of div has left.", area.getBoundingClientRect().top);
             
             document.body.classList.remove('featuredAnim');
@@ -264,8 +264,50 @@ function addScrollEvent(areaSelector, textSelector) {
 
     })
 }
-addScrollEvent('#about-container', '#about-text_container');
+addScrollEvent('#about-container', '#about-text_container', 250);
+
+// addScrollEvent('#video-header_container', '#about-text_container', 250);
 
 
 
+function addScrollEventHeader(areaSelector, num) {
+    let area = document.querySelector(areaSelector);
 
+    window.addEventListener('scroll', function(){
+        console.log(window.scrollY + (area.getBoundingClientRect().top) + 1);
+        console.log('SCROLL VALUE:', window.scrollY)
+        if(area.getBoundingClientRect().top <= num){
+            
+            
+            console.log("HEADER: top of div reached.", area.getBoundingClientRect().top);
+        
+           
+        }
+        if(area.getBoundingClientRect().top > num){
+            console.log("HEADER: top of div has left.", area.getBoundingClientRect().top);
+            
+          
+
+        }
+        //BOTTOM
+        if(area.getBoundingClientRect().bottom <= 0){
+            console.log("HEADER: bottom of div has left.", area.getBoundingClientRect().bottom);
+
+
+            
+
+        }
+
+        
+
+    })
+
+    window.addEventListener('scrolldown', function(){
+    //    area.style = `transform: translateX(${d})`;
+    })
+    window.addEventListener('scrollup', function(){
+        
+    })
+}
+
+addScrollEventHeader('#video-header_container', 200)

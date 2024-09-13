@@ -19,6 +19,7 @@
     }
     :root {
         --border-color: black;
+        --bg-color: #f4f4f4;
     }
     html {
     width: 100%;
@@ -104,10 +105,13 @@
         width: 100%;
         box-sizing: border-box;
         z-index: 1;
+        /* background-color: var(--bg-color); */
        
 
 
     }
+
+
     #header-button {
         width: 160px;
         filter: invert(100%) sepia(0%) saturate(7500%) hue-rotate(10deg) brightness(117%) contrast(108%);
