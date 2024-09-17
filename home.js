@@ -272,10 +272,18 @@ addScrollEvent('#about-container', '#about-text_container', 250);
 
 function addScrollEventHeader(areaSelector, num) {
     let area = document.querySelector(areaSelector);
+     let prevScroll;
+     let currScroll;
+    window.addEventListener('scroll', function(e){
+        
+        currScroll = window.scrollY; // Get current scroll position
+        console.log("Previous Scroll:", prevScroll, "Current Scroll:", currScroll);
+        prevScroll = currScroll; // Update prevScroll for next event
 
-    window.addEventListener('scroll', function(){
-        console.log(window.scrollY + (area.getBoundingClientRect().top) + 1);
-        console.log('SCROLL VALUE:', window.scrollY)
+
+        if ( currScroll > prevScroll) {
+            console.log('SCROLLING DOWN');
+        }
         if(area.getBoundingClientRect().top <= num){
             
             
@@ -303,11 +311,14 @@ function addScrollEventHeader(areaSelector, num) {
     })
 
     window.addEventListener('scrolldown', function(){
-    //    area.style = `transform: translateX(${d})`;
+       area.style = `transform: translateX(5rem); 
+                    transition: transform 0.5s ease;
+                    `;
     })
     window.addEventListener('scrollup', function(){
         
     })
 }
 
-addScrollEventHeader('#video-header_container', 200)
+addScrollEventHeader('#video-header_container', 200); 
+
