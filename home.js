@@ -236,14 +236,14 @@ function addScrollEvent(areaSelector, textSelector, num) {
         if(area.getBoundingClientRect().top <= num){
             
             
-            console.log("TRIGGER: top of div reached.", area.getBoundingClientRect().top);
+            // console.log("TRIGGER: top of div reached.", area.getBoundingClientRect().top);
         
             document.body.classList.add('featuredAnim');
             document.documentElement.style.setProperty('--border-color', '#f9cdcd');   
             this.document.querySelector('#button_anim-news').classList.add('news');        
         }
         if(area.getBoundingClientRect().top > num){
-            console.log("TRIGGER: top of div has left.", area.getBoundingClientRect().top);
+            // console.log("TRIGGER: top of div has left.", area.getBoundingClientRect().top);
             
             document.body.classList.remove('featuredAnim');
             document.documentElement.style.setProperty('--border-color', 'black');            
@@ -270,36 +270,46 @@ addScrollEvent('#about-container', '#about-text_container', 250);
 
 
 
-function addScrollEventHeader(areaSelector, num) {
+function addScrollEventHeader(areaSelector, num, headerSelector) {
     let area = document.querySelector(areaSelector);
-     let prevScroll;
-     let currScroll;
+    let header = document.querySelector(headerSelector);
+     let prevScroll = 0;
+     let currScroll = 0;
     window.addEventListener('scroll', function(e){
         
         currScroll = window.scrollY; // Get current scroll position
+        if ( currScroll > prevScroll ) {
+            console.log('SCROLLING DOWN');
+            header.style = 'transform: translateX(-2rem); transition: transform 0.5s ease;';
+            
+        }
+        if ( currScroll < prevScroll ) {
+            console.log('SCROLLING UP');
+        }
+
         console.log("Previous Scroll:", prevScroll, "Current Scroll:", currScroll);
+
         prevScroll = currScroll; // Update prevScroll for next event
 
 
-        if ( currScroll > prevScroll) {
-            console.log('SCROLLING DOWN');
-        }
+       
+
         if(area.getBoundingClientRect().top <= num){
             
             
-            console.log("HEADER: top of div reached.", area.getBoundingClientRect().top);
+            // console.log("HEADER: top of div reached.", area.getBoundingClientRect().top);
         
            
         }
         if(area.getBoundingClientRect().top > num){
-            console.log("HEADER: top of div has left.", area.getBoundingClientRect().top);
+            // console.log("HEADER: top of div has left.", area.getBoundingClientRect().top);
             
           
 
         }
         //BOTTOM
         if(area.getBoundingClientRect().bottom <= 0){
-            console.log("HEADER: bottom of div has left.", area.getBoundingClientRect().bottom);
+            // console.log("HEADER: bottom of div has left.", area.getBoundingClientRect().bottom);
 
 
             
@@ -310,15 +320,8 @@ function addScrollEventHeader(areaSelector, num) {
 
     })
 
-    window.addEventListener('scrolldown', function(){
-       area.style = `transform: translateX(5rem); 
-                    transition: transform 0.5s ease;
-                    `;
-    })
-    window.addEventListener('scrollup', function(){
-        
-    })
+   
 }
 
-addScrollEventHeader('#video-header_container', 200); 
+addScrollEventHeader('#video-header_container', 200, '#header-container'); 
 
