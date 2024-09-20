@@ -240,7 +240,8 @@ function addScrollEvent(areaSelector, textSelector, num) {
         
             document.body.classList.add('featuredAnim');
             document.documentElement.style.setProperty('--border-color', '#f9cdcd');   
-            this.document.querySelector('#button_anim-news').classList.add('news');        
+            this.document.querySelector('#button_anim-news').classList.add('news'); 
+            this.document.querySelector('#header-container').style.background = '#f4f4f4;' ;      
         }
         if(area.getBoundingClientRect().top > num){
             // console.log("TRIGGER: top of div has left.", area.getBoundingClientRect().top);
@@ -248,6 +249,7 @@ function addScrollEvent(areaSelector, textSelector, num) {
             document.body.classList.remove('featuredAnim');
             document.documentElement.style.setProperty('--border-color', 'black');            
             this.document.querySelector('#button_anim-news').classList.remove('news');        
+            document.querySelector('#header-container').style.background = 'black;' ;      
 
         }
         //BOTTOM
@@ -255,6 +257,7 @@ function addScrollEvent(areaSelector, textSelector, num) {
             document.body.classList.remove('featuredAnim');
             document.documentElement.style.setProperty('--border-color', 'black');  
             this.document.querySelector('#button_anim-news').classList.remove('news');        
+            this.document.querySelector('#header-container').style.background = 'black;' ;      
 
 
             
@@ -280,11 +283,17 @@ function addScrollEventHeader(areaSelector, num, headerSelector) {
         currScroll = window.scrollY; // Get current scroll position
         if ( currScroll > prevScroll ) {
             console.log('SCROLLING DOWN');
-            header.style = 'transform: translateX(-2rem); transition: transform 0.5s ease;';
-            
+            // header.style = `transform: translateY(-${currScroll - prevScroll}rem); transition: transform 0.5s ease;`;
+            header.style = `transform: translateY(-10rem);`;
+
+
         }
+
         if ( currScroll < prevScroll ) {
             console.log('SCROLLING UP');
+            // header.style = `transform: translateY(${prevScroll - currScroll}rem); transition: transform 0.5s ease;`;
+            header.style = `transform: translateY(0); `;
+
         }
 
         console.log("Previous Scroll:", prevScroll, "Current Scroll:", currScroll);
@@ -308,9 +317,10 @@ function addScrollEventHeader(areaSelector, num, headerSelector) {
 
         }
         //BOTTOM
-        if(area.getBoundingClientRect().bottom <= 0){
+        if(area.getBoundingClientRect().bottom <= 200){
             // console.log("HEADER: bottom of div has left.", area.getBoundingClientRect().bottom);
-
+            header.style.background = '#f4f4f4';
+            // header.style = ` transition:  background-color 0.5s ease;`;
 
             
 
