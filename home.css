@@ -1092,7 +1092,7 @@
         filter: brightness(0) saturate(100%) invert(99%) sepia(7%) saturate(147%) hue-rotate(297deg) brightness(115%) contrast(91%); 
     }
     #footer-footer_p-container {
-        font-size: 2rem;
+        font-size: 2vw;
         width: 50%;
     }
     #footer-footer_p {
@@ -1105,32 +1105,43 @@
     }
 
     #footer-footer_email-container {
-        width: 50%;
+        width: 40%;
     }
     #footer-footer_email-container h5 {
         font-weight: 100;
         font-size: 1.2vw;
+        margin-bottom: 3%;
 
     }
 
     #footer-footer_email-container h5::before {
         content: '●';
-        font-size: 1.6rem;
+        font-size: 1.5vw;
         
     }
-
+    #footer-footer_form {
+        display: flex;
+        position: relative;
+    }
     #footer-footer_input {
         background-color: black;
         border: 0;
         color: #f4f4f4;
         width: 100%;
-        height: 5rem;
+        height: 3.5rem;
+     
+    }
+
+    input[type="email"] {
+        font-size: 1.2vw;
+      
     }
 
     #footer-footer_input::placeholder {
-        color: #f4f4f4;
-        font-size: 1.5rem;
+        color: #f4f4f4e7;
         font-weight: 100;
+        /* font-size: 1.5rem; */
+        
         
     }
     
@@ -1138,8 +1149,28 @@
     input:focus {
         outline: none;
     }
-    
+    #footer-footer_button {
+        display: flex;
+        justify-content: flex-end;
+        width: 10%;
+        
+      
+    }
+    #footer-footer_button img{
+        width: 40%;
+        filter: brightness(0) saturate(100%) invert(99%) sepia(7%) saturate(147%) hue-rotate(297deg) brightness(115%) contrast(91%); 
 
+    }
+    #footer-footer_button::after {
+        content:"";
+        width: 100%;
+        height: 0.05rem;
+        background-color: #f4f4f4;
+        display: block;
+        position: absolute;
+        left: 0;
+        bottom: 0%;
+    }
 
    
    
