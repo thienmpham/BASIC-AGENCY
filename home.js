@@ -242,7 +242,7 @@ function addScrollEvent(areaSelector, textSelector, num) {
             document.documentElement.style.setProperty('--border-color', '#f9cdcd');   
             this.document.querySelector('#button_anim-news').classList.add('news'); 
             this.document.querySelector('#header-container').style.background = '#f4f4f4;' ;
-            document.documentElement.style.setProperty('--bg-color', 'black');  
+            document.documentElement.style.setProperty('--bg-color', '#252422');  
      
         }
         if(area.getBoundingClientRect().top > num){
