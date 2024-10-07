@@ -113,7 +113,10 @@
 
     }
 
-
+    #header-button.pinkStyle > #header-button{
+        /* color: #f9cdcd; */
+        filter: brightness(0) saturate(100%) invert(80%) sepia(7%) saturate(927%) hue-rotate(314deg) brightness(106%) contrast(95%);
+    }
     #header-button {
         width: 160px;
         /* filter: invert(100%) sepia(0%) saturate(7500%) hue-rotate(10deg) brightness(117%) contrast(108%); */
@@ -131,7 +134,7 @@
         justify-content: space-between;
         font-size: 14px;
         margin:  0 140px 0 0;
-        color: white;
+        color: black;
         align-items: center;
     }
     #nav-main li {
@@ -168,7 +171,7 @@
     /* DROPDOWN CSS */
     #dropdown {
         width: 26px;
-        filter: invert(100%) sepia(0%) saturate(7500%) hue-rotate(10deg) brightness(117%) contrast(108%);
+        /* filter: invert(100%) sepia(0%) saturate(7500%) hue-rotate(10deg) brightness(117%) contrast(108%); */
     }
     #dropdown circle {
         transform: translateX(0);

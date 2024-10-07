@@ -237,13 +237,15 @@ function addScrollEvent(areaSelector, textSelector, num) {
             
             
             // console.log("TRIGGER: top of div reached.", area.getBoundingClientRect().top);
-        
+           
             document.body.classList.add('featuredAnim');
             document.documentElement.style.setProperty('--border-color', '#f9cdcd');   
             this.document.querySelector('#button_anim-news').classList.add('news'); 
             this.document.querySelector('#header-container').style.background = '#f4f4f4;' ;
             document.documentElement.style.setProperty('--bg-color', '#252422');  
-            this.document.querySelector('#header-button').style = 'filter: brightness(0) saturate(100%) invert(81%) sepia(3%) saturate(2098%) hue-rotate(314deg) brightness(108%) contrast(95%);;';
+            // this.document.querySelector('#header-button').style = 'filter: brightness(0) saturate(100%) invert(80%) sepia(7%) saturate(927%) hue-rotate(314deg) brightness(106%) contrast(95%);';
+            this.document.querySelector('#header-container').classList.add('pinkStyle');
+
             this.document.querySelector('#button-main_menu').style = 'color: #f9cdcd;';
         }
         if(area.getBoundingClientRect().top > num){
@@ -254,7 +256,7 @@ function addScrollEvent(areaSelector, textSelector, num) {
             this.document.querySelector('#button_anim-news').classList.remove('news');        
             document.querySelector('#header-container').style.background = 'black;' ;      
             document.documentElement.style.setProperty('--bg-color', '#f4f4f4');  
-            this.document.querySelector('#header-button').style = 'filter: brightness(0) saturate(100%)';
+            // this.document.querySelector('#header-button').style = 'filter: brightness(0) saturate(100%)';
             this.document.querySelector('#button-main_menu').style = 'color: black;';
 
         }
@@ -264,7 +266,7 @@ function addScrollEvent(areaSelector, textSelector, num) {
             document.documentElement.style.setProperty('--border-color', 'black');  
             this.document.querySelector('#button_anim-news').classList.remove('news');  
             document.documentElement.style.setProperty('--bg-color', '#f4f4f4');  
-            this.document.querySelector('#header-button').style = 'filter: brightness(0) saturate(100%)';
+            // this.document.querySelector('#header-button').style = 'filter: brightness(0) saturate(100%)';
             this.document.querySelector('#button-main_menu').style = 'color: black;';
 
 
@@ -311,15 +313,15 @@ function addScrollEventHeader(areaSelector, num, headerSelector) {
 
        
 
-        if(area.getBoundingClientRect().top <= 10){
+        if(area.getBoundingClientRect().top <= num){
             this.document.querySelector('#header-button').style = 'filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(7476%) hue-rotate(188deg) brightness(108%) contrast(100%);';
             this.document.querySelector('#button-main_menu').style = 'color: white;';
             console.log('1', area.getBoundingClientRect());
             // console.log("HEADER: top of div reached.", area.getBoundingClientRect().top);
-        
-           
+            this.document.querySelector('#dropdown').style = "filter: invert(100%) sepia(0%) saturate(7500%) hue-rotate(10deg) brightness(117%) contrast(108%);"
+            this.document.querySelector('#nav-main').style = 'color: white;';
         }
-        if(area.getBoundingClientRect().top > 10){
+        if(area.getBoundingClientRect().top > num){
             // console.log("HEADER: top of div has left.", area.getBoundingClientRect().top);
             this.document.querySelector('#header-button').style = 'filter: brightness(0) saturate(100%)';
             this.document.querySelector('#button-main_menu').style = 'color: black;';
@@ -327,14 +329,15 @@ function addScrollEventHeader(areaSelector, num, headerSelector) {
 
         }
         //BOTTOM
-        if(area.getBoundingClientRect().bottom <= num){
+        if(area.getBoundingClientRect().bottom <= num && !area.getBoundingClientRect().bottom > -100){
             // console.log("HEADER: bottom of div has left.", area.getBoundingClientRect().bottom);
             header.style.background = 'var(--bg-color)';
             // header.style = ` transition:  background-color 0.5s ease;`;
             this.document.querySelector('#header-button').style = 'filter: brightness(0) saturate(100%)';
             this.document.querySelector('#button-main_menu').style = 'color: black;';
             console.log('3');
-            
+            this.document.querySelector('#nav-main').style = 'color: black'            
+            this.document.querySelector('#dropdown').style = "filter: brightness(0) saturate(100%);"
 
         }
 
