@@ -244,8 +244,9 @@ function addScrollEvent(areaSelector, textSelector, num) {
             this.document.querySelector('#header-container').style.background = '#f4f4f4;' ;
             document.documentElement.style.setProperty('--bg-color', '#252422');  
             // this.document.querySelector('#header-button').style = 'filter: brightness(0) saturate(100%) invert(80%) sepia(7%) saturate(927%) hue-rotate(314deg) brightness(106%) contrast(95%);';
-            this.document.querySelector('#header-container').classList.add('pinkStyle');
-
+            // this.document.querySelector('#header-container').classList.add('pinkStyle');
+            this.document.querySelector('#nav-main').style = 'color: #ffffff'            
+            
             this.document.querySelector('#button-main_menu').style = 'color: #f9cdcd;';
         }
         if(area.getBoundingClientRect().top > num){
@@ -268,6 +269,7 @@ function addScrollEvent(areaSelector, textSelector, num) {
             document.documentElement.style.setProperty('--bg-color', '#f4f4f4');  
             // this.document.querySelector('#header-button').style = 'filter: brightness(0) saturate(100%)';
             this.document.querySelector('#button-main_menu').style = 'color: black;';
+            this.document.querySelector('#nav-main').style = 'color: black'            
 
 
             
