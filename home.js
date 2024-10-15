@@ -232,20 +232,29 @@ function addScrollEvent(areaSelector, textSelector, num) {
     let text = document.querySelector(textSelector);
 
     window.addEventListener('scroll', function(){
-      
-        if(area.getBoundingClientRect().top <= num){
+    // RELATES TO ABOUT SECTION
+        
+    console.log('area top:',area.getBoundingClientRect().top)
+    console.log('area bottom:',area.getBoundingClientRect().bottom);
+     
+        if(area.getBoundingClientRect().top > 0) {
+            //top of about section is scrolled past 
+            this.document.querySelector('#nav-main').style = 'color: black'            
+
+        } 
+
+        if(area.getBoundingClientRect().top <= 0 && area.getBoundingClientRect().bottom >= 0){
             
             
             // console.log("TRIGGER: top of div reached.", area.getBoundingClientRect().top);
-           
+            // console.log('about section top reached', area.getBoundingClientRect().top);
+            
+
             document.body.classList.add('featuredAnim');
             document.documentElement.style.setProperty('--border-color', '#f9cdcd');   
             this.document.querySelector('#button_anim-news').classList.add('news'); 
-            this.document.querySelector('#header-container').style.background = '#f4f4f4;' ;
-            document.documentElement.style.setProperty('--bg-color', '#252422');  
             // this.document.querySelector('#header-button').style = 'filter: brightness(0) saturate(100%) invert(80%) sepia(7%) saturate(927%) hue-rotate(314deg) brightness(106%) contrast(95%);';
-            // this.document.querySelector('#header-container').classList.add('pinkStyle');
-            this.document.querySelector('#nav-main').style = 'color: #ffffff'            
+            this.document.querySelector('#nav-main').style = 'color: #f9cdcd'            
             
             this.document.querySelector('#button-main_menu').style = 'color: #f9cdcd;';
         }
@@ -291,10 +300,10 @@ function addScrollEventHeader(areaSelector, num, headerSelector) {
      let prevScroll = 0;
      let currScroll = 0;
     window.addEventListener('scroll', function(e){
-        
+    // RELATES TO HEADER SECTION
         currScroll = window.scrollY; // Get current scroll position
         if ( currScroll > prevScroll ) {
-            console.log('SCROLLING DOWN');
+            
             // header.style = `transform: translateY(-${currScroll - prevScroll}rem); transition: transform 0.5s ease;`;
             header.style = `transform: translateY(-10rem);`;
 
@@ -302,23 +311,22 @@ function addScrollEventHeader(areaSelector, num, headerSelector) {
         }
 
         if ( currScroll < prevScroll ) {
-            console.log('SCROLLING UP');
+
             // header.style = `transform: translateY(${prevScroll - currScroll}rem); transition: transform 0.5s ease;`;
             header.style = `transform: translateY(0); `;
 
         }
 
-        console.log("Previous Scroll:", prevScroll, "Current Scroll:", currScroll);
 
         prevScroll = currScroll; // Update prevScroll for next event
 
-
+        console.log('header is scrolling')
        
 
-        if(area.getBoundingClientRect().top <= num){
+        if(area.getBoundingClientRect().top > -num){
             this.document.querySelector('#header-button').style = 'filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(7476%) hue-rotate(188deg) brightness(108%) contrast(100%);';
             this.document.querySelector('#button-main_menu').style = 'color: white;';
-            console.log('1', area.getBoundingClientRect());
+            console.log('1', area.getBoundingClientRect().top);
             // console.log("HEADER: top of div reached.", area.getBoundingClientRect().top);
             this.document.querySelector('#dropdown').style = "filter: invert(100%) sepia(0%) saturate(7500%) hue-rotate(10deg) brightness(117%) contrast(108%);"
             this.document.querySelector('#nav-main').style = 'color: white;';
@@ -331,7 +339,7 @@ function addScrollEventHeader(areaSelector, num, headerSelector) {
 
         }
         //BOTTOM
-        if(area.getBoundingClientRect().bottom <= num && !area.getBoundingClientRect().bottom > -100){
+        if(area.getBoundingClientRect().bottom <= 0 &&  area.getBoundingClientRect().bottom > -num){
             // console.log("HEADER: bottom of div has left.", area.getBoundingClientRect().bottom);
             header.style.background = 'var(--bg-color)';
             // header.style = ` transition:  background-color 0.5s ease;`;
@@ -340,8 +348,8 @@ function addScrollEventHeader(areaSelector, num, headerSelector) {
             console.log('3');
             this.document.querySelector('#nav-main').style = 'color: black'            
             this.document.querySelector('#dropdown').style = "filter: brightness(0) saturate(100%);"
-
         }
+        console.log(area.getBoundingClientRect().bottom)
 
         
 
